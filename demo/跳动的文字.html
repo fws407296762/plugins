@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳动的文字</title>
+    <style>
+        #text{
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var str = "这是一段文字，这也是一段文字";
+            var $text = document.getElementById("text");
+            function animationText(str,dir){
+                if(!str || !str.length) {return false;}
+                var i = 0;
+                function strIntercept(i,dir){
+                    dir = dir || "left";
+                    var temp = '';
+                    switch(dir){
+                        case 'left':
+                            temp = str.substring(i,i+1);
+                            break;
+                        case 'right':
+                            temp = str.substring(i-1,i);
+                            break;
+                    }
+                    return temp;
+                }
+
+                var timer = setInterval(function(){
+                    (function(i){
+                        var temp = strIntercept(i);
+                        if(!temp){
+                            clearInterval(timer);
+                            strLastIntercept(str);
+                            return false;
+                        }
+                        $text.innerHTML += temp;
+                    })(i++);
+                },200);
+                function strLastIntercept(s){
+                    var index = str.indexOf("，");
+                    var temp = str.substring(index+1);
+                    var $strong = document.createElement('strong');
+                    $strong.
+                }
+            }
+            animationText(str);
+        }
+    </script>
+</head>
+<body>
+    <p id="text"></p>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event2code</title>
+</head>
+<body>
+<script>
+    var event2type={},
+    class2type={},
+    event2code={
+        click:4,
+        mousewheel:5,
+        dommousescroll:5,
+        keydown:6,
+        resize:7
+    },
+    ret={},
+    POINTERTYPES={
+        2:'touch',
+        3:'pen',
+        4:'mouse',
+        pen:'pen'
+    },
+    states={
+        start:1,
+        down:1,
+        move:2,
+        end:3,
+        up:3,
+        cancel:3
+    };
+
+    each("mouse touch pointer MSPointer-".split(" "),function(prefix){   //pointer 事件 https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events
+        // MSPointer 事件 http://www.ayqy.net/blog/html5%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6/
+        var _prefix=/pointer/i.test(prefix)?'pointer':prefix;
+        ret[_prefix]=ret[_prefix]||{};
+        POINTERTYPES[_prefix]=_prefix;
+        each(states,function(endfix,code){
+            var ev=camelCase(prefix+endfix);
+            ret[_prefix][ev]=code;
+            event2type[ev.toLowerCase()]=_prefix;  //添加事件类型
+            event2code[ev.toLowerCase()]=code;    //添加事件代码
+        });
+    });
+    console.log(event2code);
+    function each(arr, iterate){   //模拟 forEach 方法，可用于对象和数据
+        if(isArrayLike(arr)){
+            if(type(arr.forEach)=='function'){
+                return arr.forEach(iterate);
+            }
+            var i=0,len=arr.length,item;
+            for(;i<len;i++){
+                item=arr[i];
+                if(type(item)!='undefined'){
+                    iterate(item,i,arr);
+                }
+            }
+        }else{
+            var key;
+            for(key in arr){
+                iterate(key,arr[key],arr);   //这里写的很不错啊，第一个参数为当前的属性名，第二个数属性值，第三个为当前的对象
+            }
+        }
+    }
+    function isArrayLike(elem){//判断是否是数组以及类数组
+        var tp=type(elem);
+        return !!elem && tp!='function' && tp!='string' && (elem.length===0 || elem.length && (elem.nodeType==1 || (elem.length-1) in elem));
+    }
+    function type(obj){    //返回数据的类型
+        if(obj==null){
+            return obj+"";
+        }
+
+        return typeof obj=='object'||typeof obj=='function' ? class2type[toString.call(obj)]||"object" :
+                typeof obj;
+    }
+    function camelCase(str){  //驼峰式命名
+        return (str+'').replace(/^-ms-/, 'ms-').replace(/-([a-z]|[0-9])/ig, function(all, letter){
+            return (letter+'').toUpperCase();
+        });
+    }
+</script>
+</body>
+</html>

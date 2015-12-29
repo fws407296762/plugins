@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <script>
+
+        window.onload = function(){
+
+            document.documentElement.onclick = function(e){
+                console.log(e);
+                console.log(e.type);
+            }
+            document.body.onkeydown = function(e){
+                e = e || window.event;
+                var which = e.which;
+                var code = e.keyCode;
+                console.log(e);
+                console.log(which,code);
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

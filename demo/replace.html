@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>replace</title>
+</head>
+<body>
+    <script>
+        window.onload = function(){
+            var a1 = 'aaa123!!!';
+            var a2 = a1.replace(/([^\d]*)(\d*)([^\w]*)/,function(all,str1,str2,str3,letter,string){
+                console.log(all,str1,str2,str3,letter,string);
+                return [str1,str2,str3].join('-');
+
+            });
+            console.log(a1,a2)
+        }
+    </script>
+</body>
+</html>
