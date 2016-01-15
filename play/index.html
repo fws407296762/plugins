@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>播放器</title>
+    <script src="/public/js/lib/vue.js"></script>
+    <script src="/public/js/lib/jquery.js"></script>
+</head>
+<body>
+    <div id="play">
+        <audio id="audio"  :src=music.sources.src controls="controls"></audio>
+        <a href="javascript:;" id="prev" v-on:click="switchMusic('prev')">上一首</a>
+        <a href="javascript:;" id="next" @click="switchMusic('next')">下一首</a>
+        <div class="track-box" v-track:src="music.lrc"></div>
+    </div>
+
+    <script src="/public/js/index.js"></script>
+</body>
+</html>

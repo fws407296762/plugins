@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .area{
+            background: #000;
+        }
+        .box{
+            border: 5px solid #000;
+        }
+        .mt10{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" :class="classObject" :style="{color:activeColor,fontSize:fontSize+'px'}">1111</div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                activeColor:'red',
+                fontSize:30,
+                classObject:{
+                    area:true
+                }
+            }
+        })
+    </script>
+</body>
+</html>

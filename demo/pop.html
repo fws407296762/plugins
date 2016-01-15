@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="push">Push</button>
+    <div id="pushBox"></div>
+    <button id="pop">pop</button>
+    <div id="popBox"></div>
+    <button id="shift">shift</button>
+    <div id="shiftBox"></div>
+    <button id="unshift">unshift</button>
+    <div id="unshiftBox"></div>
+    <script>
+        var a = ["a","b","c","d","e","f"];
+        window.onload = function(){
+            push.addEventListener('click',function(){
+                pushBox.innerHTML = "去掉的数据是："+ a.push("j") + ";<br />数组为："+ a;
+            });
+            pop.addEventListener("click",function(){
+                popBox.innerHTML = "去掉的数据是："+ a.pop() + ";<br />数组为："+ a;
+            });
+            shift.addEventListener("click",function(){
+                shiftBox.innerHTML = "去掉的数据是："+ a.shift() + ";<br />数组为："+ a;
+            });
+            unshift.addEventListener("click",function(){
+                unshiftBox.innerHTML = "去掉的数据是："+ a.unshift("h") + ";<br />数组为："+ a;
+            });
+        }
+    </script>
+</body>
+</html>
