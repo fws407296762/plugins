@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="demo" v-demo:hello.a.b="msg"></div>
+<script>
+    Vue.directive('demo',{
+        bind:function(){
+            console.log('demo指令绑定成功')
+        },
+        update:function(value){
+            this.el.innerHTML =
+                'name - ' + this.name + '<br />' +
+                'expression - ' + this.expression +'<br />' +
+                'argument - ' + this.arg + '<br />' +
+                'modifiers - ' + JSON.stringify(this.modifiers) + '<br />' +
+                'value - ' + value;
+        }
+    });
+
+    var demo = new Vue({
+        el:'#demo',
+        data:{
+            msg:'hello!'
+        }
+    })
+</script>
+</body>
+</html>

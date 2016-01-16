@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        div:after{
+            position:absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            top:0;
+            content:"";
+            border: 3px solid #1baf40;
+        }
+        div:after{
+            animation: clipAfter 3s linear -2s infinite;
+        }
+        div:before{animation-delay: -4s;}
+        @keyframes clipAfter {
+            0%,100%{
+                clip: rect(0px 97px 97px 4px);
+            }
+            25%{
+                clip: rect(0px 100px 97px 3px);
+            }
+            50%{
+                clip: rect(3px 100px 100px 3px);
+            }
+            75%{
+                clip: rect(3px 97px 100px 0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        我东风哦我东风哦我东风哦我东风哦我东风哦我东风哦我东风哦我东风哦我东风哦
+    </div>
+</body>
+</html>

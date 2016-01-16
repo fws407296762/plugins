@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="newTodo" v-on:keyup.enter="addTodo" type="text"/>
+        <ul>
+            <li v-for="todo in todos">
+                <span>{{ todo.text }}</span>
+                <button v-on:click="removeTodo($index)">删除</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                newTodo:"请输入任务名",
+                todos:[
+                    {text:'增加任务'}
+                ]
+            },
+            methods:{
+                addTodo:function(){
+                    var text = this.newTodo.trim();
+                    if(text){
+                        this.todos.push({text:text});
+                        this.newsTodo = "";
+                    }
+                },
+                removeTodo:function(index){
+                    this.todos.splice(index,1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
