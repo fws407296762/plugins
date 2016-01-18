@@ -16,7 +16,6 @@ app.get('/',function(req,res){
 
 app.get("/musics",function(req,res){
     var query = req.query;
-    console.log(query)
     var sourceMusic = query.sourceMusic,
         destMusic = path.join(__dirname,query.destMusic || "music") ;
     if(!sourceMusic){
