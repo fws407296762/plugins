@@ -8,6 +8,10 @@
             font-weight: bold;
             color: #4CAF50;
         }
+        strong{
+            color: #000;
+            direction: rtl;
+        }
     </style>
     <script>
         window.onload = function(){
@@ -16,7 +20,7 @@
             function animationText(str,dir){
                 if(!str || !str.length) {return false;}
                 var i = 0;
-                function strIntercept(i,dir){
+                function strIntercept(str,i,dir){
                     dir = dir || "left";
                     var temp = '';
                     switch(dir){
@@ -32,20 +36,39 @@
 
                 var timer = setInterval(function(){
                     (function(i){
-                        var temp = strIntercept(i);
+                        var temp = strIntercept(str,i);
                         if(!temp){
                             clearInterval(timer);
-                            strLastIntercept(str);
+                            strLastIntercept();
                             return false;
                         }
                         $text.innerHTML += temp;
                     })(i++);
                 },200);
-                function strLastIntercept(s){
+                function text(ele){
+                    return ele.innerText || ele.textContent;
+                }
+                function strLastIntercept(){
+                    var $text = document.getElementById('text');
+                    var str = text($text);
                     var index = str.indexOf("，");
                     var temp = str.substring(index+1);
+                    $text.innerHTML = str.substring(0,index+1);
                     var $strong = document.createElement('strong');
-                    $strong.
+                    $text.appendChild($strong);
+                    var i = temp.length;
+                    var timer2 = setInterval(function(){
+                        (function(i){
+                            var temp2 = strIntercept(temp,i,'right');
+                            if(!temp2){
+                                clearInterval(timer2);
+                                return false;
+                            }
+                            var $temp2 = document.createTextNode(temp2);
+                            var $child = $strong.childNodes;
+                            $strong.insertBefore($temp2,$child[0]);
+                        })(i--);
+                    },200)
                 }
             }
             animationText(str);

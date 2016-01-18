@@ -37,9 +37,8 @@ Vue.directive('track',{
     update:function(src,oldSrc){
         "use strict";
         var $el = $(this.el);
-        console.log(src)
         var promise = $.ajax({
-            url:src
+            url:src+"?t="+(new Date())
         });
         promise.done(function(data){
             if(!data){return false;}
@@ -55,7 +54,7 @@ Vue.directive('track',{
             });
         });
     }
-})
+});
 
 var play = new Vue({
     el:"#play",
