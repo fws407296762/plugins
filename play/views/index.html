@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>播放器</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <script src="/js/lib/vue.js"></script>
+    <script src="/js/lib/jquery.js"></script>
+</head>
+<body>
+    <div class="container-fluid" id="play">
+        <form class="">
+            <div class="form-inline">
+                <div class="form-group form-item">
+                    <label for="">获取音乐目录：</label>
+                    <input type="text" name="" v-model="sourceMusic" class="form-control" id=""/>
+                    <label for="">存放音乐的目录：</label>
+                    <input type="text" name="" v-model="destMusic" class="form-control" id=""/>
+                    <a v-on:click="loadMusics()" class="btn btn-primary">自动获取歌曲</a>
+                </div>
+            </div>
+        </form>
+        <div>
+            <audio id="audio" controls="controls"></audio>
+            <a href="javascript:;" id="prev" v-on:click="switchMusic('prev')">上一首</a>
+            <a href="javascript:;" id="next" @click="switchMusic('next')">下一首</a>
+            <div class="track-box"></div>
+        </div>
+    </div>
+    <script src="/js/index.js"></script>
+</body>
+</html>

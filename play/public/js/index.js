@@ -1,10 +1,9 @@
 /**
  * Created by cnns-xz on 2016/1/6.
  */
-
+Vue.config.debug = true;
 function parseLyric(text){
     "use strict";
-    console.log(text)
     var lines = text.split('\n'),
         pattern = /\[\d{2}:\d{2}.\d{2}\]/g,
         result = [];
@@ -60,42 +59,10 @@ var play = new Vue({
     el:"#play",
     data:{
         curIndex:0,
+        sourceMusic:"E:\\KuGou",
+        destMusic:"musics",
         musics:[
-            {
-                sources:{
-                    src:"music/Selina,王力宏 - 你是我心内的一首歌.mp3",
-                    type:"audio/mpeg"
-                },
-                lrc:'lrc/Selina,王力宏 - 你是我心内的一首歌.lrc'
-            },
-            {
-                sources:{
-                    src:"music/容祖儿 - 挥着翅膀的女孩.mp3",
-                    type:"audio/mpeg"
-                },
-                lrc:'lrc/挥着翅膀的女孩.lrc'
-            },
-            {
-                sources:{
-                    src:"music/弦子 - 醉清风.mp3",
-                    type:"audio/mpeg"
-                },
-                lrc:'lrc/醉清风.lrc'
-            },
-            {
-                sources:{
-                    src:"music/林俊杰,金莎 - 被风吹过的夏天.mp3",
-                    type:"audio/mpeg"
-                },
-                lrc:'lrc/被风吹过的夏天.lrc'
-            },
-            {
-                sources:{
-                    src:"music/萧亚轩 - 突然想起你.mp3",
-                    type:"audio/mpeg"
-                },
-                lrc:'lrc/突然想起你.lrc'
-            }
+
         ]
     },
     computed:{
@@ -118,7 +85,20 @@ var play = new Vue({
                     break;
             }
             $audio.load();
-
+        },
+        loadMusics:function() {
+            var sourceMusic = this.sourceMusic,
+                destMusic = this.destMusic;
+            var promise = $.ajax({
+                url:"/musics",
+                data:{
+                    sourceMusic:sourceMusic,
+                    destMusic:destMusic
+                }
+            });
+            promise.done(function(data){
+                console.log(data);
+            })
         }
     }
 });
