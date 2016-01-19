@@ -6,7 +6,6 @@
 
 /**
  * BUG：偶尔会出现获取的音乐重复的BUG，非常不常见，待检验
- * 待续：判断音乐是否已经在目录中了，如果已经在了就不用继续执行了传入操作了；将音乐目录传递到前台，形成列表以及开始播放
  * */
 
 
@@ -14,59 +13,68 @@ var fs = require("fs"),
     path = require('path'),
     statSync = fs.statSync;
 var mp3Reg = /\.mp3$/g;
-
+var process = require("process");
 var getRandomNum = function(start,end){
     return Math.round(Math.random() * (end - start) + start);
 }
 var loadMusics = function(src,dst){
-    var dirPromise = new Promise(function(resolve,reject){
-        fs.readdir(src,function(err,dirs){
-            if(err){
-                reject(err);
-                return false;
-            }
-            resolve(dirs);
-        });
-    });
-    dirPromise.then(function(dirs){
-        var filterMp3s= dirs.filter(function(dir){
-            var dirPath = path.join(src,dir);
-            var stats = statSync(dirPath);
-            return stats.isFile() && mp3Reg.test(dir);
-        });
-        var getRandomSize = getRandomNum(5,10);
-        var filterMp3sLen = filterMp3s.length;
-        var filterMp3sRandom = [];
-        while(getRandomSize--){
-            let tempMp3Index = getRandomNum(0,filterMp3sLen-1);
-            let isContain = filterMp3sRandom.indexOf(tempMp3Index);
-            if(isContain > -1){
-                while(filterMp3sRandom.indexOf(tempMp3Index) > -1){
-                    tempMp3Index = getRandomNum(0,filterMp3sLen-1);
+    var promise = new Promise(function(resolve,reject){
+        var dirDst = path.join(process.cwd(),dst);   // __dirname 获取到的是执行文件所在的目录，process.cwd() 返回的是当前进程工作的目录
+        var dirPromise = new Promise(function(res,rej){
+            fs.readdir(src,function(err,dirs){
+                if(err){
+                    rej(err);
+                    return false;
                 }
-            }
-            try{
-                statSync(dst);
-            }catch(e){
-                fs.mkdirSync(dst);
-            }
-            let sourceFile = path.join(src,filterMp3s[tempMp3Index]),
-                destFile = path.join(dst,filterMp3s[tempMp3Index]);
-            let readStream = fs.createReadStream(sourceFile),
-                destStream = fs.createWriteStream(destFile);
-            readStream.pipe(destStream);
-            filterMp3sRandom.push({
-                music:filterMp3s[tempMp3Index]
+                res(dirs);
             });
-        }
-        console.log(filterMp3sRandom)
+        });
+        dirPromise.then(function(dirs){
+            var filterMp3s= dirs.filter(function(dir){
+                var dirPath = path.join(src,dir);
+                var stats = statSync(dirPath);
+                return stats.isFile() && mp3Reg.test(dir);
+            });
+            var getRandomSize = getRandomNum(5,10);
+            var filterMp3sLen = filterMp3s.length;
+            var filterMp3sRandom = [];
+            while(getRandomSize--){
+                let tempMp3Index = getRandomNum(0,filterMp3sLen-1);
+                let isContain = filterMp3sRandom.indexOf(tempMp3Index);
+                if(isContain > -1){
+                    while(filterMp3sRandom.indexOf(tempMp3Index) > -1){
+                        tempMp3Index = getRandomNum(0,filterMp3sLen-1);
+                    }
+                }
+                try{
+                    statSync(dirDst);
+                }catch(e){
+                    fs.mkdirSync(dirDst);
+                }
+                let sourceFile = path.join(src,filterMp3s[tempMp3Index]),
+                    destFile = path.join(dirDst,filterMp3s[tempMp3Index]);
+                try{
+                    statSync(destFile);
+                }catch(e){
+                    let readStream = fs.createReadStream(sourceFile),
+                        destStream = fs.createWriteStream(destFile);
+                    readStream.pipe(destStream);
+                }
+                filterMp3sRandom.push({
+                    src:filterMp3s[tempMp3Index],
+                    title:filterMp3s[tempMp3Index].replace(mp3Reg,"")
+                });
+            }
+            resolve(filterMp3sRandom)
+        });
+        dirPromise.catch(function(err){
+            reject({
+                code:1,
+                msg:"文件目录有误"
+            });
+        });
     });
-    dirPromise.catch(function(err){
-        return {
-            code:1,
-            msg:"文件目录有误"
-        }
-    });
+    return promise;
 }
 
 module.exports = loadMusics;

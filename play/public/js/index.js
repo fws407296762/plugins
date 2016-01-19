@@ -61,9 +61,7 @@ var play = new Vue({
         curIndex:0,
         sourceMusic:"E:\\KuGou",
         destMusic:"musics",
-        musics:[
-
-        ]
+        musics:[]
     },
     computed:{
         music:function(){
@@ -89,6 +87,7 @@ var play = new Vue({
         loadMusics:function() {
             var sourceMusic = this.sourceMusic,
                 destMusic = this.destMusic;
+            var self = this;
             var promise = $.ajax({
                 url:"/musics",
                 data:{
@@ -97,8 +96,8 @@ var play = new Vue({
                 }
             });
             promise.done(function(data){
-                console.log(data);
-            })
+                self.musics = data.musics;
+            });
         }
     }
 });
