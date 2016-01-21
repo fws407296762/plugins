@@ -35,12 +35,6 @@ $(function(){
             }
         }
     });
-    $("body").on("collapsed.pushMenu",function(){
-        console.log("收缩");
-    });
-    $("body").on("expanded.pushMenu",function(){
-        console.log("展开");
-    });
 });
 
 function init(){

@@ -12,15 +12,20 @@
   font-size:16px;
   font-style:normal;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
 .icon-jiantou2xia:before { content: "\e600"; }
 .icon-ux14002204091397903:before { content: "\e601"; }
+.icon-xiangqing:before { content: "\e60b"; }
 .icon-mulujian:before { content: "\e605"; }
+.icon-shanchu:before { content: "\e60c"; }
 .icon-lingdang:before { content: "\e602"; }
 .icon-knowledge-base:before { content: "\e603"; }
 .icon-yijianfankui:before { content: "\e604"; }
+.icon-zhongqi:before { content: "\e60d"; }
+.icon-yanqiuaddtime:before { content: "\e60e"; }
+.icon-xiugai:before { content: "\e60f"; }
+.icon-shenhe:before { content: "\e610"; }
 .icon-renqunfenbu1:before { content: "\e606"; }
 .icon-shizhong:before { content: "\e607"; }
 .icon-xianshitubiao:before { content: "\e608"; }

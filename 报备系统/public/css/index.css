@@ -1,0 +1,30 @@
+@import url("common.css");
+
+.reminder-box{}
+
+.reminder-global-box{ width: 49%; float: left;}
+.reminder-examine-box{ float: right;}
+.reminder-global-header{border-radius: 4px 4px 0 0; padding: 15px;position: relative; height: 115px; color: #fff;transition:all .5s ease-in-out;}
+.reminder-global-header>.iconfont{font-size: 93px; position: absolute;top: 11px; right: 12px;transition:all .5s ease-in-out;}
+.reminder-global-customer,.reminder-global-description{ margin: 0;transition:all .5s ease-in-out;}
+.reminder-global-customer{ margin-bottom: 5px;}
+.reminder-global-customer .reminder-global-customer-num{ font-size: 45px; margin-right: 5px;transition:all .5s ease-in-out;}
+.reminder-global-description{ font-size: 20px;}
+.reminder-state-header{ background: #e9971d; }
+.reminder-state-header>.icon-kehuguanli{ color: #c78117; }
+.reminder-examine-header{ background: #189e58;}
+.reminder-examine-header>.icon-shizhong{ color: #08874a;}
+
+.reminder-global-body{ display: none;background: #fff; padding: 10px;overflow: hidden;}
+
+.reminder-global-footer{ color: #fff; display: block;border-radius: 0 0 4px 4px;  text-align: center; padding: 5px 0;}
+.reminder-state-footer{background: #d48a29;}
+.reminder-examine-footer{ background: #1e9255;}
+
+.customer-name{ display: block;}
+
+.active-reminder-box .reminder-global-header{ height: 45px;padding: 7px; position: relative;}
+.active-reminder-box .reminder-global-customer{ margin-bottom: 5px;}
+.active-reminder-box .reminder-global-description{ font-size: 14px; margin-left: -3px; position: absolute; top: 19px; left: 108px;}
+.active-reminder-box .reminder-global-customer .reminder-global-customer-num{ font-size: 30px;}
+.active-reminder-box .reminder-global-header>.iconfont{ font-size: 34px; top: 6px;}
