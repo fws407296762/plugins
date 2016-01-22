@@ -49,6 +49,7 @@
         </div>
         <div class="content-wrapper">
             <div class="content-wrapper-main">
+                <!-- 提示-->
                 <div class="reminder-box">
                     <div class="reminder-global-box reminder-state-box">
                         <div class="reminder-global-header reminder-state-header">
@@ -219,13 +220,34 @@
                         <a href="javascript:;" class="reminder-global-footer reminder-examine-footer">赶紧搭理 <i class="iconfont icon-jiantou2xia"></i></a>
                     </div>
                 </div>
+                <!-- 客户概况 -->
+                <dl class="panel panel-deepblue customer-profile-box">
+                    <dt class="panel-header ">
+                        <a href="" class="btn btn-primary fr">新建报备</a>
+                        <span class="panel-name customer-profile-name"><i class="iconfont icon-xianshitubiao"></i>客户概况</span>
+                    </dt>
+                    <dd class="panel-body">
+                        <div id="customerProfileChart" class="chart-box"></div>
+                    </dd>
+                </dl>
+
+                <!-- 客户分布图 -->
+                <dl class="customer-map-box">
+                    <dt class="customer-map-header">
+                        <span class="customer-map-name">
+                            <i class="iconfont icon-renqunfenbu1"></i>客户分布
+                        </span>
+                    </dt>
+                    <dd id="customerMapChart" class="chart-box">
+
+                    </dd>
+                </dl>
             </div>
         </div>
-        <div class="main-footer">
-            深圳市安络科技
-        </div>
+        <div class="main-footer">深圳市安络科技</div>
     </div>
     <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/echarts.min.js"></script>
     <script src="public/js/common.js"></script>
     <script src="public/js/index.js"></script>
 </body>

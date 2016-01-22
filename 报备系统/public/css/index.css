@@ -1,14 +1,14 @@
 @import url("common.css");
 
-.reminder-box{}
+.reminder-box{ overflow: hidden;}
 
 .reminder-global-box{ width: 49%; float: left;}
 .reminder-examine-box{ float: right;}
-.reminder-global-header{border-radius: 4px 4px 0 0; padding: 15px;position: relative; height: 115px; color: #fff;transition:all .5s ease-in-out;}
-.reminder-global-header>.iconfont{font-size: 93px; position: absolute;top: 11px; right: 12px;transition:all .5s ease-in-out;}
-.reminder-global-customer,.reminder-global-description{ margin: 0;transition:all .5s ease-in-out;}
+.reminder-global-header{border-radius: 4px 4px 0 0; padding: 15px;position: relative; height: 115px; color: #fff;-webkit-transition:all .5s ease-in-out;-moz-transition:all .5s ease-in-out;transition:all .5s ease-in-out;}
+.reminder-global-header>.iconfont{font-size: 93px; position: absolute;top: 11px; right: 12px;-webkit-transition:all .5s ease-in-out;-moz-transition:all .5s ease-in-out;transition:all .5s ease-in-out;}
+.reminder-global-customer,.reminder-global-description{ margin: 0;-webkit-transition:all .5s ease-in-out;-moz-transition:all .5s ease-in-out;transition:all .5s ease-in-out;}
 .reminder-global-customer{ margin-bottom: 5px;}
-.reminder-global-customer .reminder-global-customer-num{ font-size: 45px; margin-right: 5px;transition:all .5s ease-in-out;}
+.reminder-global-customer .reminder-global-customer-num{ font-size: 45px; margin-right: 5px;-webkit-transition:all .5s ease-in-out;-moz-transition:all .5s ease-in-out;transition:all .5s ease-in-out;}
 .reminder-global-description{ font-size: 20px;}
 .reminder-state-header{ background: #e9971d; }
 .reminder-state-header>.icon-kehuguanli{ color: #c78117; }
@@ -28,3 +28,7 @@
 .active-reminder-box .reminder-global-description{ font-size: 14px; margin-left: -3px; position: absolute; top: 19px; left: 108px;}
 .active-reminder-box .reminder-global-customer .reminder-global-customer-num{ font-size: 30px;}
 .active-reminder-box .reminder-global-header>.iconfont{ font-size: 34px; top: 6px;}
+
+.chart-box{ position: relative; width: 100%; height: 500px;}
+
+.customer-map-box{border-radius: 4px}
