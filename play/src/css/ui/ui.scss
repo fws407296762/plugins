@@ -1,0 +1,42 @@
+
+@import "common";
+
+*{
+  box-sizing:border-box;
+}
+html,body{min-height: 100%;}
+body{
+  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif, 'SimSun';
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 14px;
+  color: #333;
+}
+:after, :before {
+  box-sizing: border-box;
+}
+a{ text-decoration: none;}
+.iconfont{
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.navbar:before,.navbar:after{content: " "; display: table;}
+.wrapper{
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.skin-blue{
+  @include common($bgColor:$blueBlackSlider,$logoBgColor:$blue,$sliderBgColor:$blueBlackSlider,$color:$fontColor,$headerLinkColor:$blueHeaderLinkColor,$navBgColor:$buleNavBgColor,$contentBgColor:$defaultContentBgColor,$hoverSliderColor:$hoverDeepWhiteSliderColor,$hoverDeepSliderBgColor:$hoverDeepSliderBgColor);
+}
+
+.skin-green{
+  @include common($bgColor:$blueBlackSlider,$logoBgColor:$green,$sliderBgColor:$blueBlackSlider,$color:$fontColor,$headerLinkColor:$blueHeaderLinkColor,$navBgColor:$greenNavBgColor,$contentBgColor:$defaultContentBgColor,$hoverSliderColor:$hoverDeepWhiteSliderColor,$hoverDeepSliderBgColor:$hoverDeepSliderBgColor);
+}
