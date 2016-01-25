@@ -1,0 +1,5 @@
+@import url("common.css");
+
+.panel-table>.panel-header{ border-bottom: none;}
+.customer-list-box{ margin-top: 0;}
+.customer-list-box .panel-name>.iconfont{ font-size: 16px;}

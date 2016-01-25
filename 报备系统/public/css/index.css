@@ -31,4 +31,8 @@
 
 .chart-box{ position: relative; width: 100%; height: 500px;}
 
-.customer-map-box{border-radius: 4px}
+.customer-map-box{border-radius: 4px; position: relative;}
+.customer-map-header{ position: absolute; left: 15px; top: 15px; z-index: 1;}
+.customer-map-header>.customer-map-name{ font-size: 18px; color: #fff;}
+.customer-map-header>.customer-map-name>.iconfont{ margin-right: 5px;}
+.customer-map-body{ margin-left: 0;border-radius: 4px;background-image: linear-gradient(#639fc3,#478db7);}

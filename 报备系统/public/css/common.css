@@ -12,8 +12,9 @@ a{ text-decoration: none;}
 th,td{ text-align: center;}
 body{ font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif, 'SimSun'; font-size: 14px; font-weight: 400; color: #333;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; overflow-y: auto; background-color: #fff;}
 :after, :before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-.navbar-nav:before,.navbar-nav:after{display: table; content: " ";}
+.navbar-nav:before,.navbar-nav:after,.clearfix:before,.clearfix:after{display: table; content: " ";}
 .navbar-nav,.sidebar-menu{ list-style: none; margin: 0; padding: 0;}
+
 
 .fl{ float: left; display: inline;}
 .fr{ float: right; display: inline;}
@@ -21,6 +22,11 @@ body{ font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans G
 .tal{ text-align: left;}
 .tac{ text-align: center;}
 .tar{ text-align: right;}
+
+
+.mt0{ margin-top: 0 !important;}
+.mt5{ margin-top: 5px !important;}
+.mt10{ margin-top: 10px !important;}
 
 /*±êÇ©*/
 .label{ display: inline;white-space: nowrap; vertical-align: baseline;border-radius: .25em;text-align: center;font-size: 75%; font-weight: 700; line-height: .9; color: #fff;    padding: 5px 7px 4px;}
@@ -48,18 +54,23 @@ body{ font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans G
 
 /*Ãæ°å*/
 
-.panel{ background: #fff;border-radius: 4px; margin-top: 25px;}
+.panel{ background: #fff;border-radius: 4px; margin-top: 25px; margin-bottom: 0;
+}
 .panel>.panel-header{ border-top: 3px solid transparent;border-radius: 4px 4px 0 0; border-bottom: 1px solid #f4f4f5; font-size: 18px; line-height: 2; padding:7px 15px; overflow: hidden;}
 .panel>.panel-header>.panel-name>.iconfont{ margin-right: 5px;}
+.panel>.panel-header>.action-box{ margin-top: 10px;}
 .panel>.panel-body{ padding: 25px 15px;}
 
 .panel-deepblue>.panel-header{ border-top-color: #3c86b2;}
+.panel-lightgray>.panel-header{ border-top-color: #d1d5dd;}
+
 
 /*°´Å¥*/
 .btn{ display: inline-block;border-radius: 3px; padding: 6px 12px; font-size: 14px; font-weight: 400;line-height: 1.42857143;cursor: pointer;white-space: nowrap;background-image: none;border: 1px solid transparent; text-align: center; color: #fff;}
+
 .btn-primary{background-color: #3c8dbc; border-color: #367fa9;}
 .btn-primary:hover{background-color: #367fa9;border-color: #204d74;}
-
+.btn-primary>.iconfont{ margin-right: 5px; font-size: 16px;}
 .wrapper{ background-color: #222d32;min-height: 100%; position: relative; overflow: hidden;}
 
 .wrapper:before, .wrapper:after { content: " "; display: table; }

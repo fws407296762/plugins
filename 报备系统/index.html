@@ -238,7 +238,7 @@
                             <i class="iconfont icon-renqunfenbu1"></i>客户分布
                         </span>
                     </dt>
-                    <dd id="customerMapChart" class="chart-box">
+                    <dd id="customerMapChart" class="customer-map-body chart-box">
 
                     </dd>
                 </dl>
@@ -246,9 +246,10 @@
         </div>
         <div class="main-footer">深圳市安络科技</div>
     </div>
-    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/sea.js"></script>
     <script src="public/js/echarts.min.js"></script>
-    <script src="public/js/common.js"></script>
-    <script src="public/js/index.js"></script>
+    <script>
+        seajs.use('index');
+    </script>
 </body>
 </html>
