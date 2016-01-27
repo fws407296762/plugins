@@ -65,6 +65,11 @@
       &>a{
         border-left: 3px solid transparent;
         padding: 12px 5px 12px 15px;
+        &.v-link-active{
+          color: $hoverSliderColor;
+          background: $hoverDeepSliderBgColor;
+          border-left-color: $blue;
+        }
       }
       &:hover{
         a{
@@ -73,7 +78,9 @@
           border-left-color: $blue;
         }
       }
+
     }
+
     a{
       &>.iconfont{
         width: 20px;
@@ -88,5 +95,17 @@
     z-index: 800;
     margin-left: 230px;
     transition: transform .3s ease-in-out,margin .3s ease-in-out;
+  }
+  .content-header{
+    padding: 15px 15px 0 15px;
+    &>h1{ margin: 0; font-size: 24px; font-weight: 400;}
+  }
+  .main-footer{
+    background: #fff;
+    padding: 15px;
+    color: #444;
+    border-top: 1px solid #d2d6de;
+    margin-left: 230px;
+    transition: width .3s ease-in-out;
   }
 }

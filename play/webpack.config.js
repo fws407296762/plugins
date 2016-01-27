@@ -1,15 +1,15 @@
 /**
  * Created by fuwensong on 2016/1/24.
  */
-var path =
+
 // webpack.config.js
 module.exports = {
     // entry point of our application
-    entry: './src/js/common.js',
+    entry: './public/js/common.js',
     // where to place the compiled bundle
     output: {
         path: __dirname,
-        filename: 'build.js'
+        filename: './public/js/build.js'
     },
     module: {
         // `loaders` is an array of loaders to use.
