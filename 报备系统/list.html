@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报备列表</title>
+    <link rel="stylesheet" href="public/css/list.css"/>
+</head>
+<body class="sidebar-collapse">
+    <div class="wrapper">
+        <div class="main-header">
+            <a href="/" class="logo">
+                <span class="logo-mini">报</span>
+                <span class="logo-lg">报备系统</span>
+            </a>
+            <div class="navbar">
+                <a href="#" data-toggle="offcanvas" class="sidebar-toggle iconfont icon-mulujian"></a>
+                <div class="navbar-custom-menu">
+                    <ul class="navbar-nav">
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="iconfont icon-lingdang"></i>
+                                <span class="label label-warning">10</span>
+                            </a>
+                        </li>
+                        <li class="dropdown info-menu">
+                            <a href="#" class="dropdown-toggle">付文松</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-sidebar">
+            <div class="sidebar">
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#"><i class="iconfont icon-kehuguanli"></i><span>客户报备</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="iconfont icon-gongshangdaili"></i><span>代理商</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="iconfont icon-knowledge-base"></i><span>服务知识商</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="iconfont icon-yijianfankui"></i><span>问题反馈</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="content-wrapper-main">
+                <!-- 客户列表 -->
+                <dl class="panel panel-lightgray panel-table customer-list-box">
+                    <dt class="panel-header ">
+                        <span class="panel-name"><i class="iconfont icon-kehuguanli"></i>客户报备列表</span>
+                        <div class="action-box clearfix">
+                            <form action="" class="seach-form" id="searchForm">
+                                <select name="" class="selector searchType">
+                                    <option value="">客户姓名</option>
+                                    <option value="">报备状态</option>
+                                    <option value="">报备创建时间</option>
+                                </select>
+                                <input type="text" placeholder="请输入客户名称"class="input-text " name="" id="customerName"/>
+                                <select name="" class="selector searchState">
+                                    <option value="">等待审核</option>
+                                    <option value="">审核未通过</option>
+                                    <option value="">审核通过</option>
+                                    <option value="">项目失败</option>
+                                    <option value="">项目暂停</option>
+                                    <option value="">项目成功</option>
+                                </select>
+                                <input type="date-input" placeholder="请选择创建时间" class="input-text create-date-input" name="" id="createDateTime"/>
+                                <button type="submit" class="seach-btn"><i class="iconfont icon-sousuo"></i></button>
+                            </form>
+                            <a href="" class="btn btn-primary"> <i class="iconfont icon-xinzeng"></i>新建报备</a>
+                        </div>
+                    </dt>
+                    <dd class="panel-body">
+                        <table class="data-table">
+                            <col />
+                            <col width="100"/>
+                            <col width="120"/>
+                            <col width="120"/>
+                            <col width="120"/>
+                            <col width="120"/>
+                            <col width="200"/>
+                            <thead>
+                                <th class="tal">客户名称</th>
+                                <th>报备人</th>
+                                <th class="tal">报备状态</th>
+                                <th>预计成交日期</th>
+                                <th>保护截止日期</th>
+                                <th>创建日期</th>
+                                <th>操作</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>
+                                        本人
+                                    </td>
+                                    <td class="tal"><span class="label label-wait">等待审核</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                                <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a><a href="http://www.baidu.com" title="修改审核"><i class="iconfont icon-shenhe"></i></a><a href="http://www.baidu.com" title="编辑"><i class="iconfont icon-xiugai"></i></a><a href="http://www.baidu.com" title="删除"><i class="iconfont icon-shanchu"></i></a>
+                                            </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>
+                                        本人
+                                    </td>
+                                    <td class="tal"><span class="label label-warning">审核未通过</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-fail">项目失败</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-pause">项目暂停</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-pass">审核通过</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-success">项目成功</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a><a href="http://www.baidu.com" title="重启"><i class="iconfont icon-zhongqi"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-pause">项目暂停</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-pass">审核通过</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-success">项目成功</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a><a href="http://www.baidu.com" title="重启"><i class="iconfont icon-zhongqi"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-pause">项目暂停</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-pass">审核通过</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-success">项目成功</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a><a href="http://www.baidu.com" title="重启"><i class="iconfont icon-zhongqi"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-pause">项目暂停</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-pass">审核通过</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tal">
+                                        <span class="auto-ellipsis-text">深圳市安络科技有限公司深圳市安络科技有限公司深圳市安络科技有限公司</span>
+                                    </td>
+                                    <td>本人</td>
+                                    <td class="tal"><span class="label label-success">项目成功</span></td>
+                                    <td>2016-05-06</td>
+                                    <td>2016-08-03</td>
+                                    <td>2015-03-06</td>
+                                    <td>
+                                        <span class="table-action-box">
+                                            <a href="http://www.baidu.com" title="查看详情"><i class="iconfont icon-xiangqing"></i></a><a href="http://www.baidu.com" title="重启"><i class="iconfont icon-zhongqi"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="main-footer">深圳市安络科技</div>
+    </div>
+    <script src="public/js/sea.js"></script>
+    <script>
+        seajs.use('list');
+    </script>
+</body>
+</html>

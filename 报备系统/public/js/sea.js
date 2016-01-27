@@ -7,6 +7,8 @@ seajs.config({
     alias:{
         jquery:"jquery.min",
         echarts:'echarts.min',
-        common:'common'
+        common:'common',
+        WdatePicker:"My97DatePicker/WdatePicker",
+        PCASClass:"PCASClass"
     }
 })

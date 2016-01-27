@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报备列表</title>
+    <link rel="stylesheet" href="public/css/page.css"/>
+</head>
+<body class="sidebar-collapse">
+    <div class="wrapper">
+        <div class="main-header">
+            <a href="/" class="logo">
+                <span class="logo-mini">报</span>
+                <span class="logo-lg">报备系统</span>
+            </a>
+            <div class="navbar">
+                <a href="#" data-toggle="offcanvas" class="sidebar-toggle iconfont icon-mulujian"></a>
+                <div class="navbar-custom-menu">
+                    <ul class="navbar-nav">
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="iconfont icon-lingdang"></i>
+                                <span class="label label-warning">10</span>
+                            </a>
+                        </li>
+                        <li class="dropdown info-menu">
+                            <a href="#" class="dropdown-toggle">付文松</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-sidebar">
+            <div class="sidebar">
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#"><i class="iconfont icon-kehuguanli"></i><span>客户报备</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="iconfont icon-gongshangdaili"></i><span>代理商</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="iconfont icon-knowledge-base"></i><span>服务知识商</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="iconfont icon-yijianfankui"></i><span>问题反馈</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="content-wrapper-main clearfix create-info-box" id="createInfoBox">
+                <h2 class="column-title">新建报备</h2>
+
+                <div class="column-content">
+                    <!-- 客户信息-->
+                    <dl class="panel panel-deepred customer-info">
+                        <dt class="panel-header">
+                            <span class="panel-name">客户信息</span>
+                        </dt>
+                        <dd class="panel-body">
+                            <dl class="info-item">
+                                <dt>公司名称：</dt>
+                                <dd>
+                                    <input type="text" name="" placeholder="请输入公司名称" class="input-text w400" id=""/><i class="icon-must">*</i>
+                                </dd>
+                            </dl>
+                            <dl class="info-item">
+                                <dt>公司地址：</dt>
+                                <dd>
+                                    <select name="" id="province"></select>
+                                    <select name="" id="city"></select>
+                                    <select name="" id="area"></select>
+                                    <div class="customer-address">
+                                        <input type="text" name="" placeholder="请输入详细地址" class="input-text w400" id=""/><i class="icon-must">*</i>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="info-item">
+                                <dt>客户姓名：</dt>
+                                <dd><input type="text" name="" placeholder="请输入客户姓名" class="input-text w400" id=""/><i class="icon-must">*</i></dd>
+                            </dl>
+                            <dl class="info-item">
+                                <dt>客户职位：</dt>
+                                <dd><input type="text" name="" placeholder="请输入客户职位" class="input-text w400" id=""/><i class="icon-must">*</i></dd>
+                            </dl>
+                            <dl class="info-item">
+                                <dt>客户电话：</dt>
+                                <dd><input type="text" name="" placeholder="请输入客户电话" class="input-text w400" id=""/><i class="icon-must">*</i></dd>
+                            </dl>
+                            <dl class="info-item">
+                                <dt>客户邮箱：</dt>
+                                <dd><input type="text" name="" placeholder="请输入客户邮箱" class="input-text w400" id=""/><i class="icon-must">*</i></dd>
+                            </dl>
+                        </dd>
+                    </dl>
+
+                    <!-- 其他信息-->
+                    <dl class="panel panel-deepblue other-info">
+                        <dt class="panel-header">
+                            <span class="panel-name">其他信息</span>
+                        </dt>
+                        <dd class="panel-body">
+                            <dl class="info-item" id="estimateDateBox">
+                                <dt>预计成交日期：</dt>
+                                <dd>
+                                    <input type="date-input" name="" placeholder="请输入成交日期" class="input-text w400" id="estimateDate"/><i class="icon-must">*</i>
+                                </dd>
+                            </dl>
+                            <dl class="info-item">
+                                <dt>说明：</dt>
+                                <dd>
+                                    <textarea name="" placeholder="请输入说明" class="textarea w400" id=""></textarea>
+                                </dd>
+                            </dl>
+                        </dd>
+                    </dl>
+
+                </div>
+
+                <div class="column-content">
+
+                    <!-- 选择产品-->
+                    <dl class="panel panel-deeporange select-product">
+                        <dt class="panel-header">
+                            <span class="panel-name">选择产品</span>
+                        </dt>
+                        <dd class="panel-body">
+                            <a href="#" @click.stop.prevent="toggleSelected(index,$event)"  v-for="(index,product) in products" class="select-item">
+                                <span class="item-name" v-bind:class="{'selected':product.selected}" v-cloak>{{product.name}}</span>
+                                <span class="item-num" title="修改数量" @click.stop.prevent="changeNum(index,$event)" v-if="product.selected"  v-cloak><span  v-if="!product.isChange">{{product.num}}</span> <input v-if="product.isChange" type="text" name="" id=""/></span>
+                            </a>
+                        </dd>
+                    </dl>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="main-footer">深圳市安络科技</div>
+    </div>
+    <script src="public/js/sea.js"></script>
+    <script>
+        seajs.use('create');
+    </script>
+</body>
+</html>

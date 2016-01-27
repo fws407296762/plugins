@@ -4,10 +4,10 @@
 
 define(function(require,exports,module){
     var $ = require('jquery');
+    require('echarts');
     var common = require('common');
     var showChart = common.showChart,
-        showMap = common.showMap,
-        echarts = common.echarts;
+        showMap = common.showMap;
     $(function(){
         $(".reminder-global-footer").on("click",function(){
             $(this).siblings(".reminder-global-body").slideToggle();

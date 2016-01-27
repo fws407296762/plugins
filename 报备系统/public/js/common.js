@@ -37,39 +37,6 @@ define(function(require,exports,module){
             }
         });
 
-        $.fn.selectMatch = function(options){
-            var select = "select",
-                selected = "selected",
-                disabled = "disabled",
-                active = "active",
-                reverse = "reverse",
-                changedObj = {
-                    prefix:'ui_',
-                    trigger:['change']
-                },
-                merge = $.extend({},changedObj,options||{}),
-                eleClass = merge.prefix+select,
-                underline = merge.prefix.replace(/[a-z]]/gi,""),
-                layoutObj = function(select){
-                    var index = 0,
-                        html = "";
-                    return select.find('option').each(function(i){
-                        var classAry = [eleClass+underline+"datalist"+underline+"li",this.className];
-                        this[selected] && (index = i,classAry.push(selected));
-                        this[disabled] && classAry.push(disabled);
-                        html = html + '<li class="'+classAry.join(" ")+'" data-index='+i+'>' + this.innerHTML +'</li>';
-                    }),{
-                        index:index,
-                        html:html
-                    }
-                };
-
-                return $(this).each(function(index,ele){
-                    var
-                })
-
-        }
-
     });
     function init(){
         var neg = $(".main-header").outerHeight() + $(".main-footer").outerHeight();
@@ -177,11 +144,44 @@ define(function(require,exports,module){
             showEcharts.resize()
         });
     }
+    //select 美化
+    $.fn.selectMatch=function(a){var b="select",c="selected",d="disabled",e="active",f="reverse",g={prefix:"ui_",trigger:["change"]},h=$.extend({},g,a||{}),i=h.prefix+b,j=h.prefix.replace(/[a-z]/gi,""),k=function(a){var b=0,e="";return a.find("option").each(function(a){var f=[i+j+"datalist"+j+"li",this.className];this[c]&&(b=a,f.push(c)),this[d]&&f.push(d),e=e+'<li class="'+f.join(" ")+'" data-index='+a+">"+this.innerHTML+"</li>"}),{index:b,html:e}};return $(this).each(function(a,g){var l=$(this).hide().data(b);l||(l=$("<div></div>").on("click","a",function(){if($(g).prop(d))return!1;if(l.toggleClass(e),l.hasClass(e)){var a=l.find("ul"),b=a.offset().top+a.outerHeight()>Math.max($(document.body).height(),$(window).height());l[b?"addClass":"removeClass"](f);var h=l.data("scrollTop"),i=a.find("."+c);h&&h[1]==i.attr("data-index")&&h[2]==i.text()&&(a.scrollTop(h[0]),l.removeData("scrollTop"))}else l.removeClass(f)}).on("click","li",function(a,b){var d=$(this).attr("data-index"),f=$(this).parent().scrollTop();l.removeClass(e),l.data("scrollTop",[f,d,$(this).text()]),$(g).find("option").eq(d).get(0)[c]=!0,$(g).selectMatch(h),$.each(h.trigger,function(a,c){$(g).trigger(c,[b])})}),$(this).data(b,l),$(this).after(l),$(document).mouseup(function(a){var b=a.target;b&&l.hasClass(e)&&l.get(0)!==b&&0==l.get(0).contains(b)&&l.removeClass(e).removeClass(f)}));var m=k($(this)),n=$(this).find("option").eq(m.index);l.attr("class",g.className+" "+i).width($(this).outerWidth());var o='<a href="javascript:" class="'+i+j+'button"><span class="'+i+j+'text">'+n.html()+'</span><i class="'+i+j+'icon triangle-top"></i></a>',p='<ul class="'+i+j+'datalist">'+m.html+"</ul>";l.html(o+p)})}
+
+    $("input[type='date-input']").each(function(){
+        var style = $(this).attr('style'),
+            className = $(this).attr('class'),
+            id = $(this).attr('id'),
+            name = $(this).attr('name'),
+            onclick = $(this).attr('onclick'),
+            onblur = $(this).attr('onblur'),
+            onfocus = $(this).attr('onfocus'),
+            placeholder = $(this).attr('placeholder');
+        var styleHtml = '',
+            onclickHtml = '',
+            onblurHtml = '',
+            onfocusHtml = '';
+
+        style && (styleHtml = 'style="'+style+'"');
+        onclick && (onclickHtml = 'onclick="'+onclick+'"')
+        onblur && (onblurHtml = 'onblur="'+onblur+'"')
+        onfocus && (onfocusHtml = 'onfocus="'+onfocus+'"')
+
+
+        var newDateHtml = '<span class="date-box '+className+'" '+styleHtml+'>'+
+            '<span class="date-input-box"><input placeholder="'+placeholder+'" readonly="readonly" type="text" '+onblurHtml+' '+onclickHtml+' '+onfocusHtml+'  class="date-input input-text" name="'+name+'" id="'+id+'" /></span>'+
+            '<i class="icon-date"></i>'+
+            '</span>'
+        $(this).after(newDateHtml);
+        $(this).remove();
+    });
 
     module.exports = {
         showChart:showChart,
         showMap:showMap,
-        echarts:echarts
+        init:function(a,b){
+            a = a || $("select"),
+            a.selectMatch(b)
+        }
     }
 })
 

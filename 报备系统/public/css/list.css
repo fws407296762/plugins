@@ -1,5 +1,21 @@
 @import url("common.css");
 
-.panel-table>.panel-header{ border-bottom: none;}
+
 .customer-list-box{ margin-top: 0;}
 .customer-list-box .panel-name>.iconfont{ font-size: 16px;}
+
+
+/*ËÑË÷¿ò*/
+.seach-form{ float: right;}
+.seach-form>.ui_select,.seach-form>.input-text{ float: left;}
+.seach-form>.ui_select>.ui_select_button{border-radius: 4px 0 0 4px; border-right: none;}
+.seach-form>.seach-btn{ background: #E7E7E6; border: 1px solid #d1d5dd; border-left: none;border-radius: 0 4px 4px 0; height: 36px; padding-left: 10px; padding-right: 10px;}
+.seach-form>.seach-btn:focus{outline: none;}
+.seach-form>.seach-btn:hover{ background: #ddd;}
+.seach-form>.seach-btn>.iconfont{ vertical-align: 3px;}
+
+.searchState,.create-date-input{ display: none;}
+.seach-form>.searchState>.ui_select_button{border-radius: 0; border-left: none;}
+
+.seach-form>.input-text{ width: 350px;}
+.date-box.input-text{ padding: 0;}
