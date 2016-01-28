@@ -1,0 +1,111 @@
+
+@import "normalize.min.css";
+@import "variable";
+@import "iconfont.css";
+//全局配置
+
+@mixin common($bgColor,$logoBgColor,$sliderBgColor,$color,$headerLinkColor,$navBgColor,$contentBgColor,$hoverSliderColor,$hoverDeepSliderBgColor){
+  .wrapper{
+    background: $bgColor;
+  }
+  .main-header{
+    position: relative;
+    max-height: 100px;
+    z-index: 1000;
+    .logo{
+      background: $logoBgColor;
+      color: $headerLinkColor;
+      width: 230px;
+      float: left;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 15px;
+      font-size: 20px;
+      transition:width .3s ease-in-out;
+      font-weight: 300;
+      .logo-mini{
+        display: none;
+      }
+    }
+    &>.navbar{
+      background: $navBgColor;
+      transition:width .3s ease-in-out;
+      min-height: 50px;
+      margin-left: 230px;
+      position: relative;
+    }
+  }
+  .main-sidebar{
+    background: $sliderBgColor;
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-height: 100%;
+    width: 230px;
+    z-index: 810;
+    padding-top: 50px;
+    transition:width .3s ease-in-out,transform .3s ease-in-out;
+  }
+  .sidebar{
+    padding-bottom: 10px;
+  }
+  .sidebar-menu{
+    white-space: nowrap;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &>li{
+      position: relative;
+      margin: 0;
+      padding: 0;
+      &>a{
+        border-left: 3px solid transparent;
+        padding: 12px 5px 12px 15px;
+        &.v-link-active{
+          color: $hoverSliderColor;
+          background: $hoverDeepSliderBgColor;
+          border-left-color: $blue;
+        }
+      }
+      &:hover{
+        a{
+          color: $hoverSliderColor;
+          background: $hoverDeepSliderBgColor;
+          border-left-color: $blue;
+        }
+      }
+
+    }
+
+    a{
+      &>.iconfont{
+        width: 20px;
+      }
+      display: block;
+      color: $deepWhiteSliderColor;
+    }
+  }
+  .content-wrapper{
+    background: $contentBgColor;
+    min-height: 100%;
+    z-index: 800;
+    margin-left: 230px;
+    transition: transform .3s ease-in-out,margin .3s ease-in-out;
+  }
+  .content-header{
+    padding: 15px 15px 0 15px;
+    &>h1{ margin: 0; font-size: 24px; font-weight: 400;}
+  }
+  .main-footer{
+    background: #fff;
+    padding: 15px;
+    color: #444;
+    border-top: 1px solid #d2d6de;
+    margin-left: 230px;
+    transition: width .3s ease-in-out;
+  }
+}

@@ -4,10 +4,6 @@
 
     "use strict"
 
-/**
- * BUG£ºÅ¼¶û»á³öÏÖ»ñÈ¡µÄÒôÀÖÖØ¸´µÄBUG£¬·Ç³£²»³£¼û£¬´ı¼ìÑé
- * */
-
 
 var fs = require("fs"),
     path = require('path'),
@@ -19,7 +15,7 @@ var getRandomNum = function(start,end){
 }
 var loadMusics = function(src,dst){
     var promise = new Promise(function(resolve,reject){
-        var dirDst = path.join(process.cwd(),dst);   // __dirname »ñÈ¡µ½µÄÊÇÖ´ĞĞÎÄ¼şËùÔÚµÄÄ¿Â¼£¬process.cwd() ·µ»ØµÄÊÇµ±Ç°½ø³Ì¹¤×÷µÄÄ¿Â¼
+        var dirDst = path.join(process.cwd(),dst);   // __dirname è¿”å›æ‰§è¡Œæ–‡ä»¶çš„ç›®å½• process.cwd() è¿”å›é¡¹ç›®æ‰€åœ¨ç›®å½•
         var dirPromise = new Promise(function(res,rej){
             fs.readdir(src,function(err,dirs){
                 if(err){
@@ -70,7 +66,7 @@ var loadMusics = function(src,dst){
         dirPromise.catch(function(err){
             reject({
                 code:1,
-                msg:"ÎÄ¼şÄ¿Â¼ÓĞÎó"
+                msg:"æ–‡ä»¶ç›®å½•é”™è¯¯"
             });
         });
     });

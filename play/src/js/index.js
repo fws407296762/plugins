@@ -16,7 +16,6 @@ function parseLyric(text){
     lines.forEach(function(v,i,a){
         var time = v.match(pattern),
             value = v.replace(pattern,'');
-        console.log(time)
         time.forEach(function(v1,i1,a){
             var t = v1.slice(1,-1).split(':');
             result.push([parseInt(t[0],10) * 60 + parseFloat(t[1]),value]);
