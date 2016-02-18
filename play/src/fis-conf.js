@@ -19,7 +19,7 @@ fis.match('/css/ui/ui.scss',{
 });
 fis.match('/css/*.{css,scss}',{
     parser:fis.plugin('sass2'),
-    release:"/public/css/$0",
+    release:"/public/$0",
     rExt:'.css',
     useHash:false,
     postprocessor:fis.plugin('autoprefixer'),
