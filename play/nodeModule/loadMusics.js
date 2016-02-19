@@ -66,7 +66,7 @@ var loadMusics = function(src,dst){
         dirPromise.catch(function(err){
             reject({
                 code:1,
-                msg:"文件目录错误"
+                msg:err.path + " 目录不存在"
             });
         });
     });

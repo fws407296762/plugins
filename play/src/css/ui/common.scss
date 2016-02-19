@@ -116,6 +116,7 @@ label{ display: inline-block; width: 100%; margin-bottom: 5px; font-weight: 400;
     transition: width .3s ease-in-out;
   }
 }
+.msg-error{ color: $msgError;}
 .content{
     padding: 15px;
 }

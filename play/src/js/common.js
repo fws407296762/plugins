@@ -6,7 +6,16 @@ var app = new Vue();
 
 var App = Vue.extend({})
 var router = new VueRouter();
+Vue.directive("show-msg",{
+    bind:function(){
+        "use strict";
+        console.log("°ó¶¨³É¹¦")
+    },
+    update:function(value){
+        "use strict";
 
+    }
+});
 router.map({
     "/":{
         component:require("../../views/music.vue")
@@ -38,3 +47,4 @@ function init(){
         $(".content-wrapper").css("min-height",silderHeight);
     }
 }
+
