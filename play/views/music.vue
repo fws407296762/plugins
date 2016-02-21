@@ -12,17 +12,17 @@
                     <form v-on:submit.prevent="loadMusic">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="localMusic">本地目录</label>
+                                <label>本地目录</label>
                                 <input type="text" value="{{localMusic}}" class="form-control" placeholder="输入本地根目录"/>
                             </div>
                             <div class="form-group">
-                                <label for="serverMusic">上传目录</label>
+                                <label>上传目录</label>
                                 <input type="text" value="{{serverMusic}}" class="form-control" placeholder="请输入项目存放音乐的目录"/>
                             </div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">上传音乐</button>
-                            <span v-if="isUploaded>0" v-bind:class="{'msg-error':isError,'msg-success':!isError}" v-text="uploadedMsg"></span>
+                            <msg-show></msg-show>
                         </div>
                     </form>
                 </div>
@@ -33,16 +33,13 @@
                         <h3 class="box-title">音乐列表</h3>
                     </div>
                     <div class="box-body">
-                        <ul class="music-list">
-                            <li></li>
-                        </ul>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
 <script>
     export default{
         data(){
@@ -54,7 +51,7 @@
                 uploadedMsg:""
             }
         },
-        methods:{
+    methods:{
             loadMusic:function(){
                 var self = this;
                 this.isUploaded = 1;

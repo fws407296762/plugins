@@ -2,20 +2,26 @@
  * Created by fuwensong on 2016/1/23.
  */
 
+<template id="alert">
+    <div>ÊµãËØï‰∏Ä‰∏ã {{ alertType }}</div>
+</template>
+
 var app = new Vue();
+
+var Alert = Vue.extend({
+    props:{
+        alertType:{
+            type:Number,
+            default:1
+        }
+    },
+    template:"#alert"
+})
+
+Vue.component('msg-show',MsgShow);
 
 var App = Vue.extend({})
 var router = new VueRouter();
-Vue.directive("show-msg",{
-    bind:function(){
-        "use strict";
-        console.log("∞Û∂®≥…π¶")
-    },
-    update:function(value){
-        "use strict";
-
-    }
-});
 router.map({
     "/":{
         component:require("../../views/music.vue")
@@ -28,7 +34,7 @@ router.map({
 router.start(App,"#app");
 
 $(function(){
-    console.log("ø…“‘º”‘ÿjquery...");
+    console.log("Âä†ËΩΩjquery...");
     init();
     $(window,".wrapper").resize(function(){
         init();
