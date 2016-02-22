@@ -22,7 +22,7 @@
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">上传音乐</button>
-                            <msg-show></msg-show>
+                            <v-alert :message="'成功提示的文案'" :type="'success'"></v-alert>
                         </div>
                     </form>
                 </div>
@@ -40,7 +40,9 @@
         </div>
     </div>
 </template>
+
 <script>
+    import vAlert from "../component/alert"
     export default{
         data(){
             return {
@@ -51,7 +53,8 @@
                 uploadedMsg:""
             }
         },
-    methods:{
+        components:{vAlert},
+        methods:{
             loadMusic:function(){
                 var self = this;
                 this.isUploaded = 1;

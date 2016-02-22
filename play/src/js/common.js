@@ -2,24 +2,8 @@
  * Created by fuwensong on 2016/1/23.
  */
 
-<template id="alert">
-    <div>测试一下 {{ alertType }}</div>
-</template>
 
 var app = new Vue();
-
-var Alert = Vue.extend({
-    props:{
-        alertType:{
-            type:Number,
-            default:1
-        }
-    },
-    template:"#alert"
-})
-
-Vue.component('msg-show',MsgShow);
-
 var App = Vue.extend({})
 var router = new VueRouter();
 router.map({
@@ -34,12 +18,11 @@ router.map({
 router.start(App,"#app");
 
 $(function(){
-    console.log("加载jquery...");
+    console.log("可以加载jquery...");
     init();
     $(window,".wrapper").resize(function(){
         init();
     });
-
 })
 
 function init(){
