@@ -1,6 +1,9 @@
 
 <template>
-    <div>测试一下 {{ type }} {{ message }}</div>
+    <div class="alert-box">
+        测试弹窗提示
+        <i class="iconfont icon-success"></i>
+    </div>
 </template>
 
 <script>

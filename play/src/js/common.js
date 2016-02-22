@@ -23,7 +23,7 @@ $(function(){
     $(window,".wrapper").resize(function(){
         init();
     });
-})
+});
 
 function init(){
     var neg = $(".main-header").outerHeight() + $(".main-footer").outerHeight(),

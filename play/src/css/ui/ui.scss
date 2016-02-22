@@ -1,6 +1,5 @@
 
 @import "common";
-@import "../../font/iconfont.css";
 
 *{
   box-sizing:border-box;
@@ -18,15 +17,7 @@ body{
 :after, :before {
   box-sizing: border-box;
 }
-a{ text-decoration: none;}
-.iconfont{
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+a:focus, a:hover { text-decoration: none;}
 .navbar:before,.navbar:after{content: " "; display: table;}
 .wrapper{
   min-height: 100%;
