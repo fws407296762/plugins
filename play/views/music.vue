@@ -22,7 +22,6 @@
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">上传音乐</button>
-                            <v-alert :message="'成功提示的文案'" :type="'success'"></v-alert>
                         </div>
                     </form>
                 </div>
@@ -39,7 +38,22 @@
             </div>
         </div>
     </div>
+    <div class="upload-tip" v-if="isUploaded > 0">
+        <v-alert :type="isError ? 'error' : 'success'" :message="uploadedMsg"></v-alert>
+    </div>
 </template>
+
+<style scoped>
+    .upload-tip{ 
+        position: absolute;
+        width: 100%;
+        top: 0;
+        text-align: center;
+    }
+    .upload-tip .alert-box{
+        display: inline-block;
+    }
+</style>
 
 <script>
     import vAlert from "../component/alert"
