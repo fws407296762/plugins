@@ -1,8 +1,9 @@
 
 <template>
-    <div :class="'alert-box ' + iconClass">
-        <i class="iconfont icon-success"></i>
-        测试弹窗
+    <div :class="!description ? 'alert-box alert-'+type+'-box' : 'alert-box alert-description-box alert-'+type+'-box'">
+        <i :class="'iconfont' + iconClass"></i>
+        <p class="alert-message" v-text="message"></p>
+        <p v-if="description" class="alert-description" v-text="description"></p>
     </div>
 </template>
 
@@ -27,7 +28,7 @@
         },
         computed:{
             iconClass () {   //根据描述调整 class
-                let iconClass = this.description ? "alert-with-description-icon alert-icon-" : "alert-icon alert-icon-";
+                let iconClass = this.description ? " alert-icon alert-with-description-icon icon-" : " alert-icon icon-";
                 switch (this.type){
                     case "success":
                         iconClass += 'success';
