@@ -1,8 +1,8 @@
 
 <template>
-    <div class="alert-box">
-        测试弹窗提示
+    <div :class="'alert-box ' + iconClass">
         <i class="iconfont icon-success"></i>
+        测试弹窗
     </div>
 </template>
 
@@ -27,7 +27,7 @@
         },
         computed:{
             iconClass () {   //根据描述调整 class
-                let iconClass = this.description ? "alert-with-description-icon icon-" : "alert-icon icon-";
+                let iconClass = this.description ? "alert-with-description-icon alert-icon-" : "alert-icon alert-icon-";
                 switch (this.type){
                     case "success":
                         iconClass += 'success';
