@@ -13,11 +13,11 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label>本地目录</label>
-                                <input type="text" value="{{localMusic}}" class="form-control" placeholder="输入本地根目录"/>
+                                <input type="text" v-model="localMusic" value="{{localMusic}}" class="form-control" placeholder="输入本地根目录"/>
                             </div>
                             <div class="form-group">
                                 <label>上传目录</label>
-                                <input type="text" value="{{serverMusic}}" class="form-control" placeholder="请输入项目存放音乐的目录"/>
+                                <input type="text" v-model="serverMusic" value="{{serverMusic}}" class="form-control" placeholder="请输入项目存放音乐的目录"/>
                             </div>
                         </div>
                         <div class="box-footer">
@@ -32,14 +32,22 @@
                         <h3 class="box-title">音乐列表</h3>
                     </div>
                     <div class="box-body">
-
+                        <ul v-for="music in musics">
+                            <li>
+                                <span class="music-action-box">
+                                    <a>删除</a>
+                                    <a>置顶</a>
+                                </span>
+                                <span class="music-name" v-text="music.name"></span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="upload-tip" v-if="isUploaded > 0">
-        <v-alert :type="isError ? 'error' : 'success'" :message="uploadedMsg"></v-alert>
+    <div class="upload-tip" :style="{'top': isUploaded ? '0px' : '-50px'}">
+        <v-alert :type="isError ? 'error' : 'success'" :message="uploadedMsg" :closable="true" :on-close="_close"></v-alert>
     </div>
 </template>
 
@@ -47,11 +55,15 @@
     .upload-tip{ 
         position: absolute;
         width: 100%;
-        top: 0;
+        top: -50px;
         text-align: center;
+        transition: all .5s ease-in-out;
     }
     .upload-tip .alert-box{
         display: inline-block;
+    }
+    .upload-tip.upload-tip-close{
+        top:-50px;
     }
 </style>
 
@@ -64,12 +76,13 @@
                 serverMusic:"music",
                 isError:false,
                 isUploaded:0,
-                uploadedMsg:""
+                uploadedMsg:"",
+                musics:[],
             }
         },
         components:{vAlert},
         methods:{
-            loadMusic:function(){
+            loadMusic () {
                 var self = this;
                 this.isUploaded = 1;
                 this.$http({
@@ -80,16 +93,21 @@
                     },
                     method:"GET"
                 }).then(function(res){
-                    var data = res.data;
-                    console.log(res.data);
-                    if(data){
+                    var data = res.data,
+                        code = parseInt(data.code);
+                    if(code){
                         self.isError = true;
                         self.uploadedMsg = data.msg;
                         return false;
                     }
+                    self.isError = false;
+                    self.uploadedMsg = '更新音乐成功';
                 },function(err){
-                    console.log(err.msg);
+                    self.uploadedMsg = err.msg;
                 });
+            },
+            _close () {
+                this.isUploaded = 0;
             }
         }
     }

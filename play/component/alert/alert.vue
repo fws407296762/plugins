@@ -4,6 +4,9 @@
         <i :class="'iconfont' + iconClass"></i>
         <p class="alert-message" v-text="message"></p>
         <p v-if="description" class="alert-description" v-text="description"></p>
+        <a v-if="closable" @click="_handleClose" class="alert-close-box">
+            <span v-if="!closeText" class="iconfont icon-close alert-close-icon"></span>
+        </a>
     </div>
 </template>
 
@@ -16,7 +19,7 @@
             message:String,
             description:String,
             closeText:String,
-            onClose:()=>{}
+            onClose:Function
         },
         data () {
             return {   //数据
@@ -43,11 +46,20 @@
                         iconClass += 'exclamation';
                         break;
                 }
-
                 return iconClass;
             },
             closeName () {
                 return !this.closing ? " " + this.prefixCls + "-close" :"";
+            }
+        },
+        methods:{
+            _handleClose(e){
+                let dom = this.$el;
+                dom.style.height = dom.offsetHeight + 'px';
+                this.closing = false;
+                if(this.onClose){
+                    this.onClose.call(this,e);
+                }
             }
         }
     }

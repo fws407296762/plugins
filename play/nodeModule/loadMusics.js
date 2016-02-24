@@ -2,9 +2,7 @@
  * Created by fuwensong on 2016/1/18.
  */
 
-    "use strict"
-
-
+"use strict"
 var fs = require("fs"),
     path = require('path'),
     statSync = fs.statSync;
