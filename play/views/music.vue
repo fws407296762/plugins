@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">上传音乐</button>
+                            <button type="submit" class="btn btn-primary">添加本地音乐</button>
                         </div>
                     </form>
                 </div>
@@ -32,13 +32,13 @@
                         <h3 class="box-title">音乐列表</h3>
                     </div>
                     <div class="box-body">
-                        <ul v-for="music in musics">
-                            <li>
+                        <ul class="music-list">
+                            <li v-for="(index,music) in musics">
                                 <span class="music-action-box">
                                     <a>删除</a>
                                     <a>置顶</a>
                                 </span>
-                                <span class="music-name" v-text="music.name"></span>
+                                <span class="music-name">{{index + 1}}.{{music.title}}</span>
                             </li>
                         </ul>
                     </div>
@@ -62,9 +62,16 @@
     .upload-tip .alert-box{
         display: inline-block;
     }
-    .upload-tip.upload-tip-close{
-        top:-50px;
+    .music-list{
+        list-style: none;
+        padding: 0 10px;
+        margin: 0;
     }
+    .music-list li{
+        border-bottom: 1px solid #f0f0f0;
+        padding: 10px 5px;
+    }
+    .music-action-box{ float: right;}
 </style>
 
 <script>
@@ -102,6 +109,7 @@
                     }
                     self.isError = false;
                     self.uploadedMsg = '更新音乐成功';
+                    this.musics = data.musics;
                 },function(err){
                     self.uploadedMsg = err.msg;
                 });

@@ -6,6 +6,7 @@
 var fs = require("fs"),
     path = require('path'),
     statSync = fs.statSync;
+console.log(id3);
 var mp3Reg = /\.mp3$/g;
 var process = require("process");
 var getRandomNum = function(start,end){
