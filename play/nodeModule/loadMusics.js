@@ -6,7 +6,8 @@
 var fs = require("fs"),
     path = require('path'),
     statSync = fs.statSync;
-console.log(id3);
+var id3js = require("id3js");
+var mp3Duration = require('mp3-duration');
 var mp3Reg = /\.mp3$/g;
 var process = require("process");
 var getRandomNum = function(start,end){
@@ -48,6 +49,7 @@ var loadMusics = function(src,dst){
                 }
                 let sourceFile = path.join(src,filterMp3s[tempMp3Index]),
                     destFile = path.join(dirDst,filterMp3s[tempMp3Index]);
+
                 try{
                     statSync(destFile);
                 }catch(e){
@@ -55,6 +57,17 @@ var loadMusics = function(src,dst){
                         destStream = fs.createWriteStream(destFile);
                     readStream.pipe(destStream);
                 }
+                id3js({file:destFile,type:id3js.OPEN_LOCAL},function(err,tags){
+                    if(err){
+                        console.log(err)
+                        return false;
+                    }
+                    console.log(tags)
+                })
+                mp3Duration(destFile,function(err,data){
+                    if (err) return console.log(err.message);
+                    console.log("时长："+(parseInt(data/60)+":"+parseInt(data%60)));
+                })
                 filterMp3sRandom.push({
                     src:filterMp3s[tempMp3Index],
                     title:filterMp3s[tempMp3Index].replace(mp3Reg,"")
@@ -69,6 +82,7 @@ var loadMusics = function(src,dst){
             });
         });
     });
+
     return promise;
 }
 
