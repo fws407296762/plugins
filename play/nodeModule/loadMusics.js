@@ -6,7 +6,8 @@
 var fs = require("fs"),
     path = require('path'),
     statSync = fs.statSync;
-var id3js = require("id3js");
+//var id3js = require("id3js");
+var jsmediatags = require("jsmediatags");
 var mp3Duration = require('mp3-duration');
 var iconvLite = require('iconv-lite');
 var mp3Reg = /\.mp3$/g;
@@ -25,6 +26,7 @@ var loadMusics = function(src,dst){
                 }
                 res(dirs);
             });
+
         });
 
         dirPromise.then(function(dirs){
@@ -33,7 +35,7 @@ var loadMusics = function(src,dst){
                 var stats = statSync(dirPath);
                 return stats.isFile() && mp3Reg.test(dir);
             });
-            var getRandomSize = getRandomNum(5,10);
+            var getRandomSize = getRandomNum(1,2);
             var getRandomIndex = getRandomSize;
             var filterMp3sLen = filterMp3s.length;
             var filterMp3sRandom = [];
@@ -60,26 +62,36 @@ var loadMusics = function(src,dst){
                     let readStream = fs.createReadStream(sourceFile),
                         destStream = fs.createWriteStream(destFile);
                     readStream.pipe(destStream);
+                    readStream.on('end',function(){
+                        destStream.end();
+                    })
                 }
-                id3js({file:destFile,type:id3js.OPEN_LOCAL},function(err,tags){
-                    if(err){
+                console.log(destFile)
+                jsmediatags.read(destFile,{
+                    onSuccess:function(id3){
+                        let tags = id3.tags;
+                        console.log(tags)
+                        let obj = {src:destFile};
+                        obj.title = tags.title;
+                        obj.album = tags.album;
+                        mp3Duration(destFile,pushFilterMp3sRandom(obj,getFilterMp3sRandom));
+
+                    },
+                    onError:function(error){
+                        console.log(error)
                         reject({
                             code:1,
-                            msg:err
+                            msg:error
                         });
-                        return false;
                     }
-                    let obj = {src:destFile};
-                    obj.title = tags.title;
-                    console.log(tags)
-                    obj.album = tags.album;
-                    mp3Duration(destFile,pushFilterMp3sRandom(obj,getFilterMp3sRandom));
-                });
+                })
             }
+
             var index = 0;
             function pushFilterMp3sRandom(obj,callback){
-
+                console.log(obj)
                 return function(err,data){
+
                     if (err){
                         reject({
                             code:1,
@@ -97,6 +109,7 @@ var loadMusics = function(src,dst){
             function getFilterMp3sRandom(filterMp3sRandom){
                 resolve(filterMp3sRandom);
             }
+            fs.close();
         });
         dirPromise.catch(function(err){
             reject({
