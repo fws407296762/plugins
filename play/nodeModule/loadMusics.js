@@ -8,6 +8,7 @@ var fs = require("fs"),
     statSync = fs.statSync;
 var id3js = require("id3js");
 var mp3Duration = require('mp3-duration');
+var iconvLite = require('iconv-lite');
 var mp3Reg = /\.mp3$/g;
 var process = require("process");
 var getRandomNum = function(start,end){
@@ -25,6 +26,7 @@ var loadMusics = function(src,dst){
                 res(dirs);
             });
         });
+
         dirPromise.then(function(dirs){
             var filterMp3s= dirs.filter(function(dir){
                 var dirPath = path.join(src,dir);
@@ -32,9 +34,11 @@ var loadMusics = function(src,dst){
                 return stats.isFile() && mp3Reg.test(dir);
             });
             var getRandomSize = getRandomNum(5,10);
+            var getRandomIndex = getRandomSize;
             var filterMp3sLen = filterMp3s.length;
             var filterMp3sRandom = [];
             while(getRandomSize--){
+
                 let tempMp3Index = getRandomNum(0,filterMp3sLen-1);
                 let isContain = filterMp3sRandom.indexOf(tempMp3Index);
                 if(isContain > -1){
@@ -59,21 +63,40 @@ var loadMusics = function(src,dst){
                 }
                 id3js({file:destFile,type:id3js.OPEN_LOCAL},function(err,tags){
                     if(err){
-                        console.log(err)
+                        reject({
+                            code:1,
+                            msg:err
+                        });
                         return false;
                     }
+                    let obj = {src:destFile};
+                    obj.title = tags.title;
                     console.log(tags)
-                })
-                mp3Duration(destFile,function(err,data){
-                    if (err) return console.log(err.message);
-                    console.log("时长："+(parseInt(data/60)+":"+parseInt(data%60)));
-                })
-                filterMp3sRandom.push({
-                    src:filterMp3s[tempMp3Index],
-                    title:filterMp3s[tempMp3Index].replace(mp3Reg,"")
+                    obj.album = tags.album;
+                    mp3Duration(destFile,pushFilterMp3sRandom(obj,getFilterMp3sRandom));
                 });
             }
-            resolve(filterMp3sRandom)
+            var index = 0;
+            function pushFilterMp3sRandom(obj,callback){
+
+                return function(err,data){
+                    if (err){
+                        reject({
+                            code:1,
+                            msg:err
+                        });
+                    };
+                    obj.duration = parseInt(data/60)+":"+parseInt(data%60);
+                    filterMp3sRandom.push(obj);
+                    index++;
+                    if(index === getRandomIndex){
+                        callback(filterMp3sRandom)
+                    }
+                }
+            }
+            function getFilterMp3sRandom(filterMp3sRandom){
+                resolve(filterMp3sRandom);
+            }
         });
         dirPromise.catch(function(err){
             reject({

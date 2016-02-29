@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环回调</title>
+</head>
+<script>
+    var ary = 10;
+    var ary3 = [];
+    function a(item,callback){
+        item = item + 1;
+        callback(item);
+    }
+    var ary2 = [1,2,3,4,5,6,7,8,9,10];
+    (function(callback){
+        while(ary--){
+            (function(ary){
+                a(ary2[ary],function(item){
+                    callback(item,ary)
+                    console.log(ary)
+                })
+            })(ary)
+        }
+    })(b)
+    function b(item){
+        ary3.push(item);
+        return ary3;
+    }
+    console.log(b(566777))
+    var bPromise = new Promise(function(resolve,reject){
+        resolve(b(222));
+    })
+
+    bPromise.then(function(ary3){
+        console.log(ary3);
+    });
+
+
+
+</script>
+
+<body>
+
+</body>
+</html>
