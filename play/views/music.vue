@@ -24,6 +24,14 @@
                             <button type="submit" class="btn btn-primary">添加本地音乐</button>
                         </div>
                     </form>
+
+
+                </div>
+                <div class="play-box">
+                    <span class="music-icon">
+                        <img src="/images/icon-music.jpg" alt=""/>
+                    </span>
+                    <h3 class="play-music-name">许嵩、影子、阿布 - 别咬我</h3>
                 </div>
             </div>
             <div class="col-md-6">
@@ -72,6 +80,10 @@
         padding: 10px 5px;
     }
     .music-action-box{ float: right;}
+    .play-box{ position: relative; background: #333;border-radius: 4px;padding: 15px 10px 10px 100px; margin-top: 20px; overflow: hidden;}
+    .music-icon{ width: 80px; height:80px;border-radius: 50%; float: left;text-align: center; margin-left: -90px;}
+    .music-icon img{ width: 100%; height: 100%;border-radius: 50%;}
+    .play-music-name{ color: #fff; font-size: 18px; margin-top: 8px;}
 </style>
 
 <script>

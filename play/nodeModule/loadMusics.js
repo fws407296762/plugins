@@ -6,10 +6,9 @@
 var fs = require("fs"),
     path = require('path'),
     statSync = fs.statSync;
-//var id3js = require("id3js");
-var jsmediatags = require("jsmediatags");
 var mp3Duration = require('mp3-duration');
-var iconvLite = require('iconv-lite');
+var async = require('asyncawait/async');
+var await = require('asyncawait/await');
 var mp3Reg = /\.mp3$/g;
 var process = require("process");
 var getRandomNum = function(start,end){
@@ -35,7 +34,7 @@ var loadMusics = function(src,dst){
                 var stats = statSync(dirPath);
                 return stats.isFile() && mp3Reg.test(dir);
             });
-            var getRandomSize = getRandomNum(1,2);
+            var getRandomSize = getRandomNum(5,10);
             var getRandomIndex = getRandomSize;
             var filterMp3sLen = filterMp3s.length;
             var filterMp3sRandom = [];
@@ -62,54 +61,13 @@ var loadMusics = function(src,dst){
                     let readStream = fs.createReadStream(sourceFile),
                         destStream = fs.createWriteStream(destFile);
                     readStream.pipe(destStream);
-                    readStream.on('end',function(){
-                        destStream.end();
-                    })
                 }
-                console.log(destFile)
-                jsmediatags.read(destFile,{
-                    onSuccess:function(id3){
-                        let tags = id3.tags;
-                        console.log(tags)
-                        let obj = {src:destFile};
-                        obj.title = tags.title;
-                        obj.album = tags.album;
-                        mp3Duration(destFile,pushFilterMp3sRandom(obj,getFilterMp3sRandom));
-
-                    },
-                    onError:function(error){
-                        console.log(error)
-                        reject({
-                            code:1,
-                            msg:error
-                        });
-                    }
-                })
+                filterMp3sRandom.push({
+                    src:filterMp3s[tempMp3Index],
+                    title:filterMp3s[tempMp3Index].replace(mp3Reg,"")
+                });
             }
-
-            var index = 0;
-            function pushFilterMp3sRandom(obj,callback){
-                console.log(obj)
-                return function(err,data){
-
-                    if (err){
-                        reject({
-                            code:1,
-                            msg:err
-                        });
-                    };
-                    obj.duration = parseInt(data/60)+":"+parseInt(data%60);
-                    filterMp3sRandom.push(obj);
-                    index++;
-                    if(index === getRandomIndex){
-                        callback(filterMp3sRandom)
-                    }
-                }
-            }
-            function getFilterMp3sRandom(filterMp3sRandom){
-                resolve(filterMp3sRandom);
-            }
-            fs.close();
+            resolve(filterMp3sRandom);
         });
         dirPromise.catch(function(err){
             reject({
