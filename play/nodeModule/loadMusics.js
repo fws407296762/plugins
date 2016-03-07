@@ -78,7 +78,6 @@ var loadMusics = function(src,dst){
 
                     },
                     onError:function(error){
-                        console.log(error)
                         reject({
                             code:1,
                             msg:error
