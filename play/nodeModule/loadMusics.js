@@ -6,9 +6,6 @@
 var fs = require("fs"),
     path = require('path'),
     statSync = fs.statSync;
-var mp3Duration = require('mp3-duration');
-var async = require('asyncawait/async');
-var await = require('asyncawait/await');
 var mp3Reg = /\.mp3$/g;
 var process = require("process");
 var getRandomNum = function(start,end){

@@ -36,6 +36,7 @@ app.get("/musics",function(req,res){
         });
         return false;
     }
+
     var loadMusicsPromise = loadMusics(sourceMusic,destMusic);
     loadMusicsPromise.then(function(randomMusics){
         res.json({code:0,musics:randomMusics})

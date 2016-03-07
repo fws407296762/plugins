@@ -31,7 +31,7 @@
                     <span class="music-icon">
                         <img src="/images/icon-music.jpg" alt=""/>
                     </span>
-                    <h3 class="play-music-name">许嵩、影子、阿布 - 别咬我</h3>
+                    <h3 class="play-music-name" v-text="playMusic.title"></h3>
                     <div class="track-box">
                         <div class="track-default"></div>
                         <div class="track-loaded"></div>
@@ -39,7 +39,8 @@
                     </div>
                     <div class="action-box">
                         <a class="action-btn prev-btn iconfont icon-shangyiqu"></a>
-                        <a class="action-btn play-btn iconfont icon-bofang"></a>
+                        <a v-if="!isPlaying" @click="boxPlay($event)" class="action-btn play-btn iconfont icon-bofang"></a>
+                        <a v-if="isPlaying" @click="boxpause($event)" style="vertical-align: -2px;" class="action-btn play-btn iconfont icon-zanting"></a>
                         <a class="action-btn next-btn iconfont icon-xiayiqu"></a>
                     </div>
                 </div>
@@ -53,6 +54,7 @@
                         <ul class="music-list">
                             <li v-for="(index,music) in musics">
                                 <span class="music-action-box">
+                                    <a @click="playSelected(music,$event)">播放</a>
                                     <a>删除</a>
                                     <a>置顶</a>
                                 </span>
@@ -61,12 +63,14 @@
                         </ul>
                     </div>
                 </div>
+                <audio id="audioBox" controls="controls" :src="playMusic.src"></audio>
             </div>
         </div>
     </div>
     <div class="upload-tip" :style="{'top': isUploaded ? '0px' : '-50px'}">
         <v-alert :type="isError ? 'error' : 'success'" :message="uploadedMsg" :closable="true" :on-close="_close"></v-alert>
     </div>
+
 </template>
 
 <style scoped>
@@ -105,22 +109,25 @@
 
 <script>
     import vAlert from "../component/alert"
+
     export default{
         data(){
             return {
-                localMusic:"E:/musics",
-                serverMusic:"music",
+                localMusic:"D:\\project\\plugins\\music",
+                serverMusic:"musics",
                 isError:false,
-                isUploaded:0,
+                isUploaded:false,
                 uploadedMsg:"",
                 musics:[],
+                playMusic:{},
+                isPlaying:false
             }
         },
         components:{vAlert},
         methods:{
             loadMusic () {
                 var self = this;
-                this.isUploaded = 1;
+                this.isUploaded = true;
                 this.$http({
                     url:"/musics",
                     data:{
@@ -145,7 +152,21 @@
 
             },
             _close () {
-                this.isUploaded = 0;
+                this.isUploaded = false;
+            },
+            playSelected(music,$event){
+                this.playMusic = {
+                    title:music.title,
+                    src:music.src
+                }
+            },
+            boxPlay($event){
+                var $audio = document.getElementById("audioBox");
+                $audio.play();
+                this.isPlaying = true;
+            },
+            boxPause($event){
+                this.isPlaying = false;
             }
         }
     }
