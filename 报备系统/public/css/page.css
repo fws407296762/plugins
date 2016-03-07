@@ -1,11 +1,18 @@
 @import url("common.css");
 
+
+.input-text,.textarea{ width: 70%;}
+#province{ width: 139px;}
+#city{ width: 182px;}
+#area{ width: 150px;}
 .content-wrapper-main{ padding-left: 20px; padding-right: 20px;}
 .column-title{ padding-left: 15px;}
 .panel{ margin-top: 0; margin-bottom: 25px;}
 
-.customer-info .info-item{ padding-left: 80px;}
-.customer-info .info-item>dt{ margin-left: -80px; width: 80px;}
+.reported-info .info-item{ padding-left: 70px;}
+.reported-info .info-item>dt{ margin-left: -70px; width: 70px;}
+.customer-info .info-item{ padding-left: 85px;}
+.customer-info .info-item>dt{ margin-left: -85px; width: 85px;}
 .other-info .info-item{ padding-left: 100px;}
 .other-info .info-item>dt{ margin-left: -100px; width: 100px;}
 
@@ -14,6 +21,8 @@
 .create-info-box .info-item dt{ line-height: 36px;}
 .create-info-box .info-item dd{ margin-top: 0;}
 .create-info-box .info-item dd .icon-must{ margin-left: 5px;}
+
+.save-btn{ margin-left: 15px;}
 @media all and (max-width:1360px){
     .column-content{ float: none; width: 100%;}
 }

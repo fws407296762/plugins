@@ -24,6 +24,24 @@
                             <button type="submit" class="btn btn-primary">添加本地音乐</button>
                         </div>
                     </form>
+
+
+                </div>
+                <div class="play-box">
+                    <span class="music-icon">
+                        <img src="/images/icon-music.jpg" alt=""/>
+                    </span>
+                    <h3 class="play-music-name">许嵩、影子、阿布 - 别咬我</h3>
+                    <div class="track-box">
+                        <div class="track-default"></div>
+                        <div class="track-loaded"></div>
+                        <span class="track-point"></span>
+                    </div>
+                    <div class="action-box">
+                        <a class="action-btn prev-btn iconfont icon-shangyiqu"></a>
+                        <a class="action-btn play-btn iconfont icon-bofang"></a>
+                        <a class="action-btn next-btn iconfont icon-xiayiqu"></a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -72,6 +90,17 @@
         padding: 10px 5px;
     }
     .music-action-box{ float: right;}
+    .play-box{ position: relative; background: #333;border-radius: 4px;padding: 15px 10px 10px 100px; margin-top: 20px; overflow: hidden;}
+    .music-icon{ width: 80px; height:80px;border-radius: 50%; float: left;text-align: center; margin-left: -90px;}
+    .music-icon img{ width: 100%; height: 100%;border-radius: 50%;}
+    .play-music-name{ color: #fff; font-size: 16px; margin-top: 8px;}
+    .track-box{ position: relative; height: 6px; margin-top: 15px;}
+    .track-default{ left: 0; top: 0; background: #000;box-shadow: inset 0 0 5px #666; position: absolute; width: 100%; height: 100%;border-radius: 6px;}
+    .track-loaded{ left: 0; top: 0; background: linear-gradient(#fff,#e0e0e0); position: absolute; width: 0; height: 100%;border-radius: 6px; z-index: 10;}
+    .track-point{ position: absolute;background: linear-gradient(#fff,#e0e0e0); width: 12px; height: 12px; border-radius: 100%; top: -3px; cursor: pointer;}
+    .action-box{ margin-top: 10px;}
+    .action-box a{ padding: 0 5px 0 0;text-align: center;background-image: linear-gradient(#fff,#e0e0e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent; font-size: 20px; cursor: pointer;}
+    .play-btn{ margin-left: 8px; margin-right: 5px;}
 </style>
 
 <script>
@@ -113,6 +142,7 @@
                 },function(err){
                     self.uploadedMsg = err.msg;
                 });
+
             },
             _close () {
                 this.isUploaded = 0;

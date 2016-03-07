@@ -48,93 +48,140 @@
             </div>
         </div>
         <div class="content-wrapper">
-            <div class="content-wrapper-main clearfix create-info-box" id="createInfoBox">
-                <h2 class="column-title">新建报备</h2>
+            <div class="content-wrapper-main  create-info-box" id="createInfoBox">
+                <form action="" class="create-info-form clearfix">
+                    <h2 class="column-title">新建报备</h2>
 
-                <div class="column-content">
-                    <!-- 客户信息-->
-                    <dl class="panel panel-deepred customer-info">
-                        <dt class="panel-header">
-                            <span class="panel-name">客户信息</span>
-                        </dt>
-                        <dd class="panel-body">
-                            <dl class="info-item">
-                                <dt>公司名称：</dt>
-                                <dd>
-                                    <input type="text" name="" placeholder="请输入公司名称" class="input-text w400" id=""/><i class="icon-must">*</i>
-                                </dd>
-                            </dl>
-                            <dl class="info-item">
-                                <dt>公司地址：</dt>
-                                <dd>
-                                    <select name="" id="province"></select>
-                                    <select name="" id="city"></select>
-                                    <select name="" id="area"></select>
-                                    <div class="customer-address">
-                                        <input type="text" name="" placeholder="请输入详细地址" class="input-text w400" id=""/><i class="icon-must">*</i>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="info-item">
-                                <dt>客户姓名：</dt>
-                                <dd><input type="text" name="" placeholder="请输入客户姓名" class="input-text w400" id=""/><i class="icon-must">*</i></dd>
-                            </dl>
-                            <dl class="info-item">
-                                <dt>客户职位：</dt>
-                                <dd><input type="text" name="" placeholder="请输入客户职位" class="input-text w400" id=""/><i class="icon-must">*</i></dd>
-                            </dl>
-                            <dl class="info-item">
-                                <dt>客户电话：</dt>
-                                <dd><input type="text" name="" placeholder="请输入客户电话" class="input-text w400" id=""/><i class="icon-must">*</i></dd>
-                            </dl>
-                            <dl class="info-item">
-                                <dt>客户邮箱：</dt>
-                                <dd><input type="text" name="" placeholder="请输入客户邮箱" class="input-text w400" id=""/><i class="icon-must">*</i></dd>
-                            </dl>
-                        </dd>
-                    </dl>
+                    <div class="column-content">
+                        <dl class="panel panel-deepgreen reported-info">
+                            <dt class="panel-header">
+                                <span class="panel-name">报备信息</span>
+                            </dt>
+                            <dd class="panel-body">
+                                <dl class="info-item">
+                                    <dt>项目名称：</dt>
+                                    <dd>
+                                        <input type="text" name="" placeholder="请输入项目名称" class="input-text" id=""/><i class="icon-must">*</i>
+                                    </dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>项目介绍：</dt>
+                                    <dd>
+                                        <textarea name="" placeholder="请输入项目介绍" class="textarea" id=""></textarea>
+                                    </dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                        <!-- 客户信息-->
+                        <dl class="panel panel-deepred customer-info">
+                            <dt class="panel-header">
+                                <span class="panel-name">客户信息</span>
+                            </dt>
+                            <dd class="panel-body">
+                                <dl class="info-item">
+                                    <dt>所属代理商：</dt>
+                                    <dd>
+                                        <select name="" id="">
+                                            <option value="">测试代理商</option>
+                                        </select>
+                                    </dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>公司名称：</dt>
+                                    <dd>
+                                        <input type="text" name="" placeholder="请输入公司名称" class="input-text" id=""/><i class="icon-must">*</i>
+                                    </dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>公司地址：</dt>
+                                    <dd>
+                                        <select name="" id="province"></select>
+                                        <select name="" id="city"></select>
+                                        <select name="" id="area"></select>
+                                        <div class="customer-address">
+                                            <input type="text" name="" placeholder="请输入详细地址" class="input-text" id=""/><i class="icon-must">*</i>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>客户姓名：</dt>
+                                    <dd><input type="text" name="" placeholder="请输入客户姓名" class="input-text" id=""/><i class="icon-must">*</i></dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>客户职位：</dt>
+                                    <dd><input type="text" name="" placeholder="请输入客户职位" class="input-text" id=""/><i class="icon-must">*</i></dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>客户电话：</dt>
+                                    <dd><input type="text" name="" placeholder="请输入客户电话" class="input-text" id=""/><i class="icon-must">*</i></dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>客户邮箱：</dt>
+                                    <dd><input type="text" name="" placeholder="请输入客户邮箱" class="input-text" id=""/><i class="icon-must">*</i></dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>决策人：</dt>
+                                    <dd><input type="text" name="" placeholder="请输入决策人" class="input-text" id=""/><i class="icon-must">*</i></dd>
+                                </dl>
+                                <dl class="info-item">
+                                    <dt>竞争对手：</dt>
+                                    <dd><input type="text" name="" placeholder="请输入竞争对手" class="input-text" id=""/><i class="icon-must">*</i></dd>
+                                </dl>
+                            </dd>
+                        </dl>
 
-                    <!-- 其他信息-->
-                    <dl class="panel panel-deepblue other-info">
-                        <dt class="panel-header">
-                            <span class="panel-name">其他信息</span>
-                        </dt>
-                        <dd class="panel-body">
-                            <dl class="info-item" id="estimateDateBox">
-                                <dt>预计成交日期：</dt>
-                                <dd>
-                                    <input type="date-input" name="" placeholder="请输入成交日期" class="input-text w400" id="estimateDate"/><i class="icon-must">*</i>
-                                </dd>
-                            </dl>
-                            <dl class="info-item">
-                                <dt>说明：</dt>
-                                <dd>
-                                    <textarea name="" placeholder="请输入说明" class="textarea w400" id=""></textarea>
-                                </dd>
-                            </dl>
-                        </dd>
-                    </dl>
+                    </div>
 
-                </div>
+                    <div class="column-content">
 
-                <div class="column-content">
+                        <!-- 选择产品-->
+                        <dl class="panel panel-deeporange select-product">
+                            <dt class="panel-header">
+                                <span class="panel-name">选择产品</span>
+                            </dt>
+                            <dd class="panel-body">
+                            <span @click.stop.prevent="toggleSelected(index,$event)"  v-for="(index,product) in products" class="select-item"  v-bind:class="{'selected':product.selected}">
+                                <span class="item-name"v-text="product.name"></span>
+                                <span class="item-num" v-if="product.selected" v-cloak>
+                                    <span class="show-num" v-text="product.num"></span>
+                                    <span class="item-action" v-if="product.selected" v-cloak>
+                                        <a href="#" v-on:click.stop.prevent="numPlus(index,$event)" class="item-plus"><i class="triangle-bottom"></i></a>
+                                        <a href="#" v-on:click.stop.prevent="numReduce(index,$event)" class="item-reduce"><i class="triangle-top"></i></a>
+                                    </span>
+                                </span>
 
-                    <!-- 选择产品-->
-                    <dl class="panel panel-deeporange select-product">
-                        <dt class="panel-header">
-                            <span class="panel-name">选择产品</span>
-                        </dt>
-                        <dd class="panel-body">
-                            <a href="#" @click.stop.prevent="toggleSelected(index,$event)"  v-for="(index,product) in products" class="select-item">
-                                <span class="item-name" v-bind:class="{'selected':product.selected}" v-cloak>{{product.name}}</span>
-                                <span class="item-num" title="修改数量" @click.stop.prevent="changeNum(index,$event)" v-if="product.selected"  v-cloak><span  v-if="!product.isChange">{{product.num}}</span> <input v-if="product.isChange" type="text" name="" id=""/></span>
-                            </a>
-                        </dd>
-                    </dl>
+                                <!--<i class="iconfont icon-shanchu2"></i>-->
+                            </span>
+                            </dd>
+                        </dl>
+                        <!-- 其他信息-->
+                        <dl class="panel panel-deepblue other-info">
+                            <dt class="panel-header">
+                                <span class="panel-name">其他信息</span>
+                            </dt>
+                            <dd class="panel-body">
+                                <dl class="info-item" id="estimateDateBox">
+                                    <dt>预计成交日期：</dt>
+                                    <dd>
+                                        <input type="date-input" name="" placeholder="请输入成交日期" class="input-text" id="estimateDate"/><i class="icon-must">*</i>
+                                    </dd>
+                                </dl>
 
-                </div>
-
+                                <dl class="info-item">
+                                    <dt>申请理由：</dt>
+                                    <dd>
+                                        <textarea name="" placeholder="请输入申请理由" class="textarea" id=""></textarea>
+                                    </dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </div>
+                </form>
+                <p>
+                    <button type="submit" class="btn btn-primary btn-lg save-btn">保存</button>
+                </p>
             </div>
+
         </div>
         <div class="main-footer">深圳市安络科技</div>
     </div>

@@ -12,13 +12,19 @@
   font-size:16px;
   font-style:normal;
   -webkit-font-smoothing: antialiased;
-  /*-webkit-text-stroke-width: 0.2px;*/
+  -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-shanchu:before { content: "\e607"; }
+.icon-bofang:before { content: "\e60b"; }
 .icon-music:before { content: "\e601"; }
+.icon-zhiding:before { content: "\e608"; }
 .icon-update:before { content: "\e600"; }
 .icon-close:before { content: "\e603"; }
+.icon-shangyiqu:before { content: "\e609"; }
+.icon-xiayiqu:before { content: "\e60a"; }
 .icon-error:before { content: "\e604"; }
 .icon-success:before { content: "\e605"; }
 .icon-info:before { content: "\e606"; }
 .icon-exclamation:before { content: "\e602"; }
+.icon-zanting:before { content: "\e60c"; }

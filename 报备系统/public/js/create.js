@@ -79,13 +79,22 @@ define(function(require,exports,module){
         },
         methods:{
             toggleSelected:function(index,$event){
-
                 var isSelected = this.products[index].selected;
                 this.products[index].selected = isSelected ? false : true;
             },
             changeNum:function(index,$event){
-                console.log(this.products[index].isChange)
                 this.products[index].isChange = true;
+                var width = $($event.target).outerWidth();
+                this.products[index].width=width;
+            },
+            numPlus:function(index,$event){
+                this.products[index].num++;
+            },
+            numReduce:function(index,$event){
+                if(this.products[index].num === 1){
+                    return false;
+                }
+                this.products[index].num--;
             }
         }
     });

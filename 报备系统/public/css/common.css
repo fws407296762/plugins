@@ -16,6 +16,14 @@ body{ font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans G
 .navbar-nav,.sidebar-menu{ list-style: none; margin: 0; padding: 0;}
 select{ display: none;}
 [v-cloak]{ display: none;}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+input[type="number"] {
+     -moz-appearance: textfield;
+ }
 .fl{ float: left; display: inline;}
 .fr{ float: right; display: inline;}
 
@@ -95,6 +103,8 @@ select{ display: none;}
 .btn-primary:hover{background-color: #367fa9;border-color: #204d74;}
 .btn-primary>.iconfont{ margin-right: 5px; font-size: 16px;}
 
+.btn-lg{padding: 10px 16px; font-size: 18px; line-height: 1.3333333;}
+
 .btn-lightblue{ background: #1fb5df; border-color: #00acd6;}
 .btn-lightblue:hover{ background: #00acd6; border-color: #269abc;}
 
@@ -161,7 +171,7 @@ select{ display: none;}
 .ui_select>.ui_select_button>.ui_select_text{ display: inline-block; width: 100%;}
 .ui_select>.ui_select_button>.ui_select_icon{ border-width: 5px;margin-left: 3px; position: absolute; right: 12px; top: 50%; margin-top: -2px;}
 /*.ui_select.active>.ui_select_button{ border-color: #aaa;}*/
-.ui_select.active>.ui_select_datalist{ display: block; position: absolute; width: 100%; left: 0; top: 98%;}
+.ui_select.active>.ui_select_datalist{ display: block; position: absolute; width: 100%; left: 0; top: 98%; z-index: 10;}
 .ui_select>.ui_select_datalist{ display: none; background: #fff; list-style: none; padding: 0; margin: 0; border: 1px solid #d1d5dd;}
 .ui_select>.ui_select_datalist li{ padding: 5px 10px; cursor: pointer;white-space: nowrap; overflow: hidden;-webkit-transition: background-color .15s;-moz-transition: background-color .15s;transition: background-color .15s;}
 .ui_select>.ui_select_datalist li:hover{ background: #fafafa;}
@@ -203,15 +213,27 @@ select{ display: none;}
 
 
 .selected-product,.select-item{display: inline-block; color: #fff; line-height: 1.5;white-space: nowrap; margin-right: 10px; margin-bottom: 10px;}
-.selected-product-name,.selected-product-num,.item-name,.item-num{ float: left; padding: 10px;}
+.selected-product-name,.selected-product-num,.item-name{ padding: 0 5px;}
+.selected-product-name,.selected-product-num,.item-name,.item-num{ float: left; height: 40px; line-height: 40px;}
 /*选中的产品*/
 .selected-product-box{ margin-right: -10px;}
 .selected-product{ background: #e9971d;}
-.selected-product-name,.item-name.selected{ background: #e9971d; color: #fff;}
+.selected-product-name,.select-item.selected>.item-name{ background: #e9971d; color: #fff; border-color: transparent;}
 .selected-product-num,.item-num{ background: #d38715; color: #fff; position: relative;}
-.select-item .item-num:hover{ background: #a9690a;}
-.select-item .item-num:hover:before{content:attr(title); background: rgba(0,0,0,0.5); position: absolute; padding: 3px 6px;border-radius: 4px; left: 50%; margin-left: -30px; top: -30px; font-size: 12px;}
-.select-item .item-num:hover:after{content:" "; position: absolute;left: 50%; top: -6px; margin-left: -3px;display: inline-block; width: 0; height: 0; border-width: 5px; border-style: solid;border-right-color: transparent; border-top-color: rgba(0,0,0,0.5); border-left-color: transparent; border-bottom-color: transparent;}
+/*.select-item .item-num:hover .item-action{ display: block;}*/
+.select-item{ cursor: pointer;}
+.select-item.selected{ border-color: transparent;}
+.select-item .edit-num{ color: #333; border: 1px solid #d38715; width: 20px; background-color: #fff; height: 40px;text-align: center;}
+.select-item .show-num{ padding: 0 5px; float: left;white-space: nowrap; overflow: hidden;}
+.select-item .item-action{ display: block; width: 20px; height: 40px; float: left; background: #f4f4f4;}
+.select-item .item-action a{ display: block;width: 100%; height: 20px; line-height: 20px; text-align: center;}
+.select-item .item-action .item-plus .triangle-bottom,.select-item .item-action .item-reduce .triangle-top{ border-width: 5px;}
+.select-item .item-action a:hover{ background: #ddd;}
+.select-item .item-action a:active{ background: #ccc;}
+.select-item .item-action .item-plus .triangle-bottom{ border-bottom-color: #666;}
+.select-item .item-action .item-reduce .triangle-top{ border-top-color: #666;}
+.select-item .item-action .item-plus{line-height: 1;}
+.select-item .item-action .item-reduce{ line-height: 1.8;}
 /*选择产品*/
 
 .select-item{ color: #333; border: 1px solid #d1d5dd;}
