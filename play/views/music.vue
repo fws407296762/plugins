@@ -40,7 +40,7 @@
                     <div class="action-box">
                         <a class="action-btn prev-btn iconfont icon-shangyiqu"></a>
                         <a v-if="!isPlaying" @click="boxPlay($event)" class="action-btn play-btn iconfont icon-bofang"></a>
-                        <a v-if="isPlaying" @click="boxpause($event)" style="vertical-align: -2px;" class="action-btn play-btn iconfont icon-zanting"></a>
+                        <a v-if="isPlaying" @click="boxPause($event)" style="vertical-align: -2px;" class="action-btn play-btn iconfont icon-zanting"></a>
                         <a class="action-btn next-btn iconfont icon-xiayiqu"></a>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                         </ul>
                     </div>
                 </div>
-                <audio id="audioBox" controls="controls" :src="playMusic.src"></audio>
+                <!--<audio id="audioBox" controls="controls" :src="playMusic.src"></audio>-->
             </div>
         </div>
     </div>
@@ -111,6 +111,7 @@
     import vAlert from "../component/alert"
 
     export default{
+        components:{vAlert},
         data(){
             return {
                 localMusic:"D:\\project\\plugins\\music",
@@ -120,10 +121,15 @@
                 uploadedMsg:"",
                 musics:[],
                 playMusic:{},
-                isPlaying:false
+                isPlaying:false,
+                audio:null
             }
         },
-        components:{vAlert},
+        watch:{
+            'isPlaying':function(val, oldVal){
+                console.log(val, oldVal);
+            }
+        },
         methods:{
             loadMusic () {
                 var self = this;
@@ -159,13 +165,14 @@
                     title:music.title,
                     src:music.src
                 }
+                this.audio = new Audio(music.src);
             },
             boxPlay($event){
-                var $audio = document.getElementById("audioBox");
-                $audio.play();
+                this.audio.play();
                 this.isPlaying = true;
             },
             boxPause($event){
+                this.audio.pause();
                 this.isPlaying = false;
             }
         }

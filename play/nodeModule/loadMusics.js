@@ -6,7 +6,7 @@
 var fs = require("fs"),
     path = require('path'),
     statSync = fs.statSync;
-var mp3Reg = /\.mp3$/g;
+var mp3Reg = /\.mp3$/;
 var process = require("process");
 var getRandomNum = function(start,end){
     return Math.round(Math.random() * (end - start) + start);
@@ -26,11 +26,13 @@ var loadMusics = function(src,dst){
         });
 
         dirPromise.then(function(dirs){
+            
             var filterMp3s= dirs.filter(function(dir){
                 var dirPath = path.join(src,dir);
                 var stats = statSync(dirPath);
                 return stats.isFile() && mp3Reg.test(dir);
             });
+            console.log(filterMp3s)
             var getRandomSize = getRandomNum(5,10);
             var getRandomIndex = getRandomSize;
             var filterMp3sLen = filterMp3s.length;

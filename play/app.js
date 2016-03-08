@@ -18,6 +18,7 @@ app.use(express.static("musics",{    //设置 mp3 的静态目录
         res.set('Content-Length',stat.size);
     }
 }));
+
 app.engine('html',require("ejs").renderFile);  //将 ejs 的后缀转换为 html
 app.set('view engine','html');  //设置视图引擎为 html
 app.set('views','views')
