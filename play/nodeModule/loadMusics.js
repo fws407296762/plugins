@@ -32,7 +32,6 @@ var loadMusics = function(src,dst){
                 var stats = statSync(dirPath);
                 return stats.isFile() && mp3Reg.test(dir);
             });
-            console.log(filterMp3s)
             var getRandomSize = getRandomNum(5,10);
             var getRandomIndex = getRandomSize;
             var filterMp3sLen = filterMp3s.length;

@@ -114,7 +114,7 @@
         components:{vAlert},
         data(){
             return {
-                localMusic:"D:\\project\\plugins\\music",
+                localMusic:"E:\\KuGou",
                 serverMusic:"musics",
                 isError:false,
                 isUploaded:false,
@@ -127,7 +127,9 @@
         },
         watch:{
             'isPlaying':function(val, oldVal){
-                console.log(val, oldVal);
+                if(val){
+
+                }
             }
         },
         methods:{
@@ -166,6 +168,9 @@
                     src:music.src
                 }
                 this.audio = new Audio(music.src);
+                this.audio.autoplay = true;
+                this.isPlaying = true;
+                console.log(this.audio.readyState)
             },
             boxPlay($event){
                 this.audio.play();
