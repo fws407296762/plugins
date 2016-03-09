@@ -24,8 +24,10 @@
                             <button type="submit" class="btn btn-primary">添加本地音乐</button>
                         </div>
                     </form>
-
-
+                    <form method="post" action="/upload" enctype="multipart/form-data">
+                        <input type="file" name="music" multiple="multiple" id=""/>
+                        <input type="submit" value="上传"/>
+                    </form>
                 </div>
                 <div class="play-box">
                     <span class="music-icon">
