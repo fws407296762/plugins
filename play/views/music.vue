@@ -24,8 +24,6 @@
                             <button type="submit" class="btn btn-primary">添加本地音乐</button>
                         </div>
                     </form>
-
-
                 </div>
                 <div class="play-box">
                     <span class="music-icon">
