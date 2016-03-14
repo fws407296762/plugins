@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="public/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/lib/AdminLTE.min.css">
+    <link rel="stylesheet" href="public/css/lib/_all-skins.min.css">
+    <link rel="stylesheet" href="public/css/common.css">
+</head>
+<body class="skin-blue">
+    
+    <div class="wrapper">
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <h1 class="logo">前端工具箱</h1>
+                <ul class="sidebar-menu">
+                    <li class="header">工具类</li>
+                    <li><a href=""><span>爬虫工具</span></a></li>
+                </ul>
+            </section>
+        </aside>
+        <div class="content-wrapper" ng-view></div>
+    </div>
+    <script>
+        window.nodeRequire = require;
+        delete window.require;
+        delete window.exports;
+        delete window.module;
+    </script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="public/js/route.js"></script>
+</body>
+</html>
