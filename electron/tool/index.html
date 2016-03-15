@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="toolApp">
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -16,11 +16,14 @@
                 <h1 class="logo">前端工具箱</h1>
                 <ul class="sidebar-menu">
                     <li class="header">工具类</li>
-                    <li><a href=""><span>爬虫工具</span></a></li>
+                    <li><a href="#/crawler"><span>爬虫工具</span></a></li>
+                    <li><a href="#/markdown"><span>MarkDown编辑器</span></a></li>
                 </ul>
             </section>
         </aside>
-        <div class="content-wrapper" ng-view></div>
+        <div class="content-wrapper">
+            <div class="view-content" ng-view></div>
+        </div>
     </div>
     <script>
         window.nodeRequire = require;
@@ -31,6 +34,8 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="public/js/route.js"></script>
+    <script src="public/js/controller.js"></script>
 </body>
 </html>

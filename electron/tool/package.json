@@ -4,10 +4,17 @@
   "main": "main.js",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-animate": "^1.5.0",
     "angular-route": "^1.5.0",
     "jquery": "^2.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cheerio": "^0.20.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-uglify": "^1.5.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

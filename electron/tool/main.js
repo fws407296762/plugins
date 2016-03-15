@@ -12,9 +12,11 @@ app.on('window-all-closed',function(){   //当窗口关闭的时候
 
 app.on('ready',function(){
     mainWindow = new BrowserWindow({  //创建浏览器窗口
-        width:800,  //宽度
-        height:600,  //高度
-        title:"前端工具箱" //应用标题
+        width:1000,  //宽度
+        height:800,  //高度
+        title:"前端工具箱", //应用标题
+        darkTheme:true,
+        autoHideMenuBar:true //隐藏菜单栏
     });
     mainWindow.loadURL('file://' + __dirname + '/index.html'); //加载本地文件
     mainWindow.webContents.openDevTools({detach:true});  //打开调试工具

@@ -1,0 +1,2 @@
+"use strict";toolApp.controller("crawlerController",["$scope",function(o){o.url="",o.match="",o.crawleEvent=function(){console.log(o.url,o.match)}}]);
+"use strict";toolApp.controller("markdownController",function(){});
