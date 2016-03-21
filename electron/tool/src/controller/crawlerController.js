@@ -25,10 +25,10 @@ toolApp.controller("crawlerController",function($scope){
         }
 
         var req = http.request(options,function(res){
-            // res.setEncoding('utf8');
+            
             var html = ""
             res.on('data',function(chunk){
-               var decode = iconv.decode(chunk, 'gbk')
+               var decode = iconv.decode(chunk, 'gbk');
                html += decode;
             });
             res.on('end',function(){
