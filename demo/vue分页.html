@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+    <div id="app">
+        <!-- 等待审核 -->
+        <reminder-box
+                :count="8"
+                reminder-text="正在等待您的审核"
+                state-box-class="reminder-examine-box"
+                default-box-class="reminder-default-box"
+                icon-class="icon-shizhong"
+                :customers='[{
+                agent_name:"abc",
+                created_at:"2016-03-10T17:26:21.152+08:00",
+                filing_state:"等待审核",
+                id:45,
+                last_track_states_status:"",
+                name:"1",
+                updated_at:"2016-03-10T17:26:21.152+08:00"
+                },{
+                agent_name:"abc",
+                created_at:"2016-03-10T17:26:21.152+08:00",
+                filing_state:"等待审核",
+                id:45,
+                last_track_states_status:"",
+                name:"1",
+                updated_at:"2016-03-10T17:26:21.152+08:00"
+                },{
+                agent_name:"abc",
+                created_at:"2016-03-10T17:26:21.152+08:00",
+                filing_state:"等待审核",
+                id:45,
+                last_track_states_status:"",
+                name:"1",
+                updated_at:"2016-03-10T17:26:21.152+08:00"
+                },{
+                agent_name:"abc",
+                created_at:"2016-03-10T17:26:21.152+08:00",
+                filing_state:"等待审核",
+                id:45,
+                last_track_states_status:"",
+                name:"1",
+                updated_at:"2016-03-10T17:26:21.152+08:00"
+                },{
+                agent_name:"abc",
+                created_at:"2016-03-10T17:26:21.152+08:00",
+                filing_state:"等待审核",
+                id:45,
+                last_track_states_status:"",
+                name:"1",
+                updated_at:"2016-03-10T17:26:21.152+08:00"
+                },{
+                agent_name:"abc",
+                created_at:"2016-03-10T17:26:21.152+08:00",
+                filing_state:"等待审核",
+                id:45,
+                last_track_states_status:"",
+                name:"1",
+                updated_at:"2016-03-10T17:26:21.152+08:00"
+                },{
+                agent_name:"abc",
+                created_at:"2016-03-10T17:26:21.152+08:00",
+                filing_state:"等待审核",
+                id:45,
+                last_track_states_status:"",
+                name:"1",
+                updated_at:"2016-03-10T17:26:21.152+08:00"
+                },{
+                agent_name:"abc",
+                created_at:"2016-03-10T17:26:21.152+08:00",
+                filing_state:"等待审核",
+                id:45,
+                last_track_states_status:"",
+                name:"1",
+                updated_at:"2016-03-10T17:26:21.152+08:00"
+                }]'
+                default-footer-class="reminder-default-footer"
+                state-footer-class="reminder-examine-footer"
+                default-tip-text="没有审核"
+                state-tip-text="赶紧去审核"
+                state-name="报备状态">
+        </reminder-box>
+
+
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-paginate.js"></script>
+    <script>
+
+        Vue.filter("dateTimeFilter",function(datetime){
+            if(!datetime) return false;
+            var date = new Date(datetime);
+            var year = date.getFullYear(),
+                    month = date.getMonth() + 1,
+                    day = date.getDate();
+            month = datePrefix(month);
+            day = datePrefix(day);
+            return year+"-"+month+"-"+day;
+        });
+        Vue.filter('trackStateTextFiler',function(state){
+            var stateObj = {
+                tend:"意向",
+                test:"测试",
+                price:"报价",
+                business:"商务",
+                process:"处理中",
+                pause:"项目暂停",
+                fail:"项目失败",
+                success:"成交",
+                pass:"审核通过",
+                new:"等待审核",
+                eliminate:"审核不通过"
+            }
+            return stateObj[state];
+        });
+        Vue.filter('trackStateClassFiler',function(state){
+            var stateObj = {
+                tend:"bg-yellow",
+                test:"bg-aqua",
+                price:"bg-aqua-active",
+                business:"bg-light-blue-active",
+                process:"bg-light-blue",
+                pause:"bg-purple",
+                fail:"bg-red-active",
+                success:"bg-green-active",
+                pass:"bg-green",
+                new :"bg-teal",
+                eliminate:"bg-red-active"
+            }
+            return stateObj[state];
+        });
+        var reminderComponent = Vue.extend({
+            props:{
+                count:Number,
+                defaultBoxClass:String,
+                stateBoxClass:String,
+                reminderText:String,
+                iconClass:String,
+                customers:Array,
+                defaultFooterClass:String,
+                stateFooterClass:String,
+                defaultTipText:String,
+                stateTipText:String,
+                stateName:String
+            },
+            computed:{
+                footerText:function(){
+                    return this.count>0 ? this.stateTipText:this.defaultTipText
+                }
+            },
+            methods:{
+                toggleShow:function(event){
+                    if(!this.count) return false;
+                    var $footer = $(event.target);
+                    $footer.siblings(".reminder-global-body").slideToggle();
+                    $(this.$el).toggleClass("active-reminder-box");
+                    $footer.find(".iconfont").toggleClass("icon-ux14002204091397903");
+                },
+                deleteReport:function(id,event){
+                    console.log(id);
+                },
+                createTrackState:function(id,event){
+                    this.$parent.modifyId = id;
+                    this.$parent.trackRecord = "tend";
+                    this.$parent.trackDescription = "";
+                    this.$parent.isDescriptionEmpty = false;
+                    this.$parent.descriptionEmptyMsg = "";
+                    this.$parent.isModify = false;
+                }
+            },
+            template: '<div class="reminder-global-box" :class="[count ? stateBoxClass : defaultBoxClass]">'+
+            '<div class="reminder-global-header">' +
+            '<div class="reminder-global-info">'+
+            '<p class="reminder-global-customer"><strong class="reminder-global-customer-num" v-text="count"></strong>位客户</p>'+
+            '<p class="reminder-global-description" v-text="reminderText"></p>'+
+            '</div>'+
+            '<i class="iconfont" :class="iconClass"></i>'+
+            '</div>'+
+            '<div class="reminder-global-body">'+
+            '<table class="data-table">'+
+            '<thead>'+
+            '<th class="tal">客户</th>'+
+            '<th>代理商</th>'+
+            '<th v-text="stateName"></th>'+
+            '<th>修改时间</th>'+
+            '<th>创建时间</th>'+
+            '<th>操作</th>'+
+            '</thead>'+
+            '<tbody v-paginate:3="customers">'+
+            '<tr v-for="(index,customer) in customers">'+
+            '<td class="tal"><span class="auto-ellipsis-text" v-text="customer.name"></span></td>'+
+            '<td v-text="customer.agentName"></td>'+
+            '<td>'+
+            '<span class="label" :class="customer.state | trackStateClassFiler" v-text="customer.state | trackStateTextFiler"></span>'+
+            '</td>'+
+            '<td v-text="customer.modifyTime | dateTimeFilter"></td>'+
+            '<td v-text="customer.createTime | dateTimeFilter"></td>'+
+            '<td>'+
+            '<span class="table-action-box">'+
+            '<a :href="customer.detailsHref" title="查看详情"><i class="iconfont icon-xiangqing"></i></a><a data-toggle="modal" @click.prevent="createTrackState(customer,$event)" data-target="#modifyTrackBox" title="新建状态"><i class="iconfont icon-shenhe"></i></a><a v-if="iconClass==icon-shizhong" href="" title="编辑"><i class="iconfont icon-xiugai"></i></a><a @click="deleteReport(customer.id,$event)" title="删除"><i class="iconfont icon-shanchu"></i></a>'+
+            '</span>'+
+            '</td>'+
+            '</tr>'+
+            '</tbody>'+
+            '<tfoot>'+
+            '<span v-for="customerLink in customersLinks">'+
+            '<a @click="changeCustomersPage(customerLink)" href="#" v-text="customerLink+1"></a>'+
+            '</span>'+
+            '</tfoot>'+
+            '</table>'+
+            '</div>'+
+            '<span @click.prevent="toggleShow" class="reminder-global-footer" :class="[ count > 0 ? stateFooterClass:defaultFooterClass]">{{footerText}}<i v-if="count > 0" class="iconfont icon-jiantou2xia"></i></span>'+
+            '</div>'
+        });
+        Vue.component('reminder-box',reminderComponent)
+
+
+
+        new Vue({
+            el: '#app',
+            data: {
+                langs: [
+                    {id:1,value:"2"},
+                    {id:2,value:"2"},
+                    {id:3,value:"2"},
+                    {id:4,value:"2"},
+                    {id:5,value:"2"},
+                    {id:6,value:"2"},
+                    {id:7,value:"2"},
+                    {id:8,value:"2"},
+                    {id:9,value:"2"},
+                    {id:10,value:"2"},
+                    {id:11,value:"2"},
+                    {id:12,value:"2"},
+                    {id:13,value:"2"},
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
